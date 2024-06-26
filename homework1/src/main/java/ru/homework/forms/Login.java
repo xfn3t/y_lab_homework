@@ -1,6 +1,7 @@
 package ru.homework.forms;
 
 import ru.homework.DTO.User;
+import ru.homework.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,8 @@ public class Login {
      * @return An Optional containing the authenticated User if found, otherwise an empty Optional.
      */
     public static Optional<User> loginUser(final List<User> users) {
+
+
         Scanner scanner = new Scanner(System.in);
 
         String login;
