@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * The Workspace class represents a workspace with a unique ID, title, start reservation date, and end reservation date.
@@ -36,6 +37,25 @@ public class Workspace {
      * The end date and time for the workspace reservation.
      */
     private Date endReservations;
+
+    public static boolean isDateOverlapWorkspace(final Date newDate, final List<Workspace> workspaces) {
+        for (Workspace workspace : workspaces) {
+            if (!newDate.before(workspace.getStartReservations()) && !newDate.after(workspace.getEndReservations())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isDateOverlapWorkspace(final Date newDate, final List<Workspace> workspaces, final Long workspaceId) {
+        for (Workspace workspace : workspaces) {
+            if (workspace.getWorkspaceId().equals(workspaceId)) continue;
+            if (!newDate.before(workspace.getStartReservations()) && !newDate.after(workspace.getEndReservations())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Returns a string representation of the workspace with formatted date and time.

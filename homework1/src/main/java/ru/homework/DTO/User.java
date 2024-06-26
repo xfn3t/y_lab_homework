@@ -17,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
 
+
+    private Long userId;
     /**
      * The username of the user.
      */
@@ -35,7 +37,7 @@ public class User {
     /**
      * The workspace associated with the user.
      */
-    private Workspace workspace;
+    private Workspace userWorkspace;
 
     /**
      * Constructs a User with the specified username and password.
@@ -56,9 +58,10 @@ public class User {
     @Override
     public String toString() {
         return new StringBuilder("{")
+                .append("ID: ").append(userId).append(", ")
                 .append("Username: ").append(username).append(", ")
                 .append("Conferences: ").append(userConferences).append(", ")
-                .append("Workspace: ").append(workspace)
+                .append("Workspace: ").append(userWorkspace)
                 .append("}")
                 .toString();
     }

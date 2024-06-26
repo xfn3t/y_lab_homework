@@ -1,6 +1,7 @@
 package ru.homework.forms;
 
 import ru.homework.DTO.User;
+import ru.homework.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,16 +37,6 @@ public class Registration {
         return password1.equals(password2);
     }
 
-    /**
-     * Checks if a user with the given username already exists in the list of users.
-     *
-     * @param username The username to check.
-     * @param users    The list of users.
-     * @return true if a user with the given username exists, false otherwise.
-     */
-    private boolean userExist(final String username, final List<User> users) {
-        return users.stream().anyMatch(x -> x.getUsername().equals(username));
-    }
 
     /**
      * Prompts the user to enter a username and password for registration.
@@ -53,16 +44,15 @@ public class Registration {
      * If the registration is successful, returns an Optional containing the new User.
      * If the registration fails, returns an empty Optional.
      *
-     * @param users The list of existing users to check for duplicates.
      * @return An Optional containing the registered User if successful, otherwise an empty Optional.
      */
-    public Optional<User> registrationNewUser(final List<User> users) {
+    public Optional<User> registrationNewUser(final UserService userService) {
 
         Scanner scanner = new Scanner(System.in);
 
         String username;
         String password;
-        String repeatPassword = null;
+        String repeatPassword = "";
 
         do {
 
@@ -71,7 +61,7 @@ public class Registration {
 
             if (username.trim().equals("") || username.length() < 2)
                 errorMessage("username should be not empty or length < 2");
-            else if(userExist(username, users)) {
+            else if(userService.exist(username)) {
                 errorMessage("user exist");
                 return Optional.empty();
             }
