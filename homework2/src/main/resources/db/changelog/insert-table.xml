@@ -3,11 +3,10 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
-        logicalFilePath="db/changelog.xml">
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
 
+    <!-- Insert data into t_workspace -->
     <changeSet id="insert_workspace" author="xfnet">
-        <!-- Insert data into t_workspace -->
         <insert tableName="t_workspace" schemaName="private">
             <column name="workspace_id" value="1"/>
             <column name="title" value="Workspace A"/>
@@ -22,8 +21,8 @@
         </insert>
     </changeSet>
 
+    <!-- Insert data into t_user -->
     <changeSet id="insert_user" author="xfnet">
-        <!-- Insert data into t_user -->
         <insert tableName="t_user" schemaName="private">
             <column name="user_id" value="1"/>
             <column name="username" value="qwe"/>
@@ -38,8 +37,8 @@
         </insert>
     </changeSet>
 
+    <!-- Insert data into t_conference -->
     <changeSet id="insert_conference" author="xfnet">
-        <!-- Insert data into t_conference -->
         <insert tableName="t_conference" schemaName="private">
             <column name="conference_id" value="1"/>
             <column name="conference_title" value="theta"/>
@@ -57,6 +56,5 @@
             <column name="user_id" value="2"/>
         </insert>
     </changeSet>
-
 
 </databaseChangeLog>

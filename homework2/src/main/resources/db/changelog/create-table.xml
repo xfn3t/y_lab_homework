@@ -3,8 +3,14 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
-        logicalFilePath="db/changelog.xml">
+    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <!-- Create schema private if it does not exist -->
+    <changeSet id="create_schema_private" author="xfnet">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS private;
+        </sql>
+    </changeSet>
 
     <!-- Create table private.t_workspace -->
     <changeSet id="create_workspace" author="xfnet">
@@ -13,8 +19,8 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="varchar(255)"/>
-            <column name="start_reservations" type="date"/>
-            <column name="end_reservations" type="date"/>
+            <column name="start_reservations" type="timestamp"/>
+            <column name="end_reservations" type="timestamp"/>
         </createTable>
     </changeSet>
 
@@ -33,14 +39,14 @@
     </changeSet>
 
     <!-- Create table private.t_conference -->
-    <changeSet id="3" author="xfnet">
+    <changeSet id="create_conference" author="xfnet">
         <createTable tableName="t_conference" schemaName="private">
             <column name="conference_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="conference_title" type="varchar(255)"/>
-            <column name="start_conference" type="date"/>
-            <column name="end_conference" type="date"/>
+            <column name="start_conference" type="timestamp"/>
+            <column name="end_conference" type="timestamp"/>
             <column name="number_conference_room" type="bigint"/>
             <column name="user_id" type="bigint">
                 <constraints nullable="false"/>
@@ -49,7 +55,7 @@
     </changeSet>
 
     <!-- Add foreign key for workspace_id -->
-    <changeSet id="4" author="xfnet">
+    <changeSet id="add_fk_user_workspace" author="xfnet">
         <addForeignKeyConstraint baseTableName="t_user" baseColumnNames="workspace_id"
                                  constraintName="fk_user_workspace"
                                  referencedTableName="t_workspace" referencedColumnNames="workspace_id"
@@ -59,7 +65,7 @@
     </changeSet>
 
     <!-- Add foreign key for user_id in t_conference -->
-    <changeSet id="5" author="xfnet">
+    <changeSet id="add_fk_conference_user" author="xfnet">
         <addForeignKeyConstraint
                 baseTableName="t_conference"
                 baseColumnNames="user_id"
