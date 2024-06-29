@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        logicalFilePath="db/changelog.xml">
+
+    <!-- Create table private.t_workspace -->
+    <changeSet id="create_workspace" author="xfnet">
+        <createTable tableName="t_workspace" schemaName="private">
+            <column name="workspace_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)"/>
+            <column name="start_reservations" type="datetime"/>
+            <column name="end_reservations" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Create table private.t_user -->
+    <changeSet id="create_user" author="xfnet">
+        <createTable tableName="t_user" schemaName="private">
+            <column name="user_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(100)"/>
+            <column name="password" type="varchar(100)"/>
+            <column name="workspace_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Create table private.t_conference -->
+    <changeSet id="3" author="xfnet">
+        <createTable tableName="t_conference" schemaName="private">
+            <column name="conference_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="conference_title" type="varchar(255)"/>
+            <column name="start_conference" type="datetime"/>
+            <column name="end_conference" type="datetime"/>
+            <column name="number_conference_room" type="bigint"/>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Add foreign key for workspace_id -->
+    <changeSet id="4" author="xfnet">
+        <addForeignKeyConstraint baseTableName="t_user" baseColumnNames="workspace_id"
+                                 constraintName="fk_user_workspace"
+                                 referencedTableName="t_workspace" referencedColumnNames="workspace_id"
+                                 baseTableSchemaName="private"
+                                 referencedTableSchemaName="private"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <!-- Add foreign key for user_id in t_conference -->
+    <changeSet id="5" author="xfnet">
+        <addForeignKeyConstraint
+                baseTableName="t_conference"
+                baseColumnNames="user_id"
+                constraintName="fk_conference_user"
+                referencedTableName="t_user"
+                referencedColumnNames="user_id"
+                baseTableSchemaName="private"
+                referencedTableSchemaName="private"
+                onDelete="CASCADE"
+                onUpdate="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>
