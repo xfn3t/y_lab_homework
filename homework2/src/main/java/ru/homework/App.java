@@ -1,14 +1,24 @@
 package ru.homework;
 
+import liquibase.Liquibase;
+import liquibase.database.Database;
+import liquibase.database.DatabaseFactory;
+import liquibase.database.jvm.JdbcConnection;
+import liquibase.exception.LiquibaseException;
+import liquibase.resource.ClassLoaderResourceAccessor;
 import ru.homework.DTO.Conference;
 import ru.homework.DTO.User;
 import ru.homework.DTO.Workspace;
+import ru.homework.connection.ConnectionManager;
 import ru.homework.exceptions.EntityExistException;
 import ru.homework.forms.Login;
 import ru.homework.forms.Registration;
 import ru.homework.service.ConferenceService;
 import ru.homework.service.UserService;
+import ru.homework.service.WorkspaceService;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -21,6 +31,7 @@ public class App {
 
     private static final ConferenceService conferenceService = new ConferenceService();
     private static final UserService userService = new UserService();
+    private static final WorkspaceService workspaceService = new WorkspaceService();
 
 
     /**
@@ -58,10 +69,9 @@ public class App {
      * @param list the list of existing events.
      * @return the input start date as a Date object.
      */
-    private static Date inputStart(List list) {
+    private static Date inputStart(List<Conference> list) {
         Date start;
         Date today = new Date();
-        ConferenceService conferenceService = new ConferenceService();
 
         do {
             start = inputDate("start");
@@ -73,6 +83,30 @@ public class App {
                 errorMessage("", "The conference dates overlap with an existing conference.");
             }
         } while (start.before(today) || conferenceService.isDateOverlap(start, list));
+
+        return start;
+    }
+
+    /**
+     * Prompts the user to input a start date for a conference and ensures the date
+     * is not in the past and does not overlap with existing conferences.
+     *
+     * @return the input start date as a Date object.
+     */
+    private static Date inputStart() throws SQLException {
+        Date start;
+        Date today = new Date();
+
+        do {
+            start = inputDate("start");
+            if (start.before(today)) {
+                infoMessage("Conference can't be in the past");
+                continue;
+            }
+            if (workspaceService.isDateOverlap(start)) {
+                errorMessage("", "The conference dates overlap with an existing conference.");
+            }
+        } while (start.before(today) || workspaceService.isDateOverlap(start));
 
         return start;
     }
@@ -178,6 +212,31 @@ public class App {
         return endConference;
     }
 
+    /**
+     * Prompts the user to input an end date for a conference and ensures the date
+     * is after the start date and does not overlap with existing conferences.
+     *
+     * @param start the start date.
+     * @return the input end date as a Date object.
+     */
+    private static Date inputEnd(Date start) throws SQLException {
+
+        Date end;
+
+        do {
+            end = inputDate("end");
+            if (end.before(start)) {
+                errorMessage("End date must be after start date.");
+                continue;
+            }
+            if (workspaceService.isDateOverlap(end)) {
+                errorMessage("", "The conference dates overlap with an existing event.");
+            }
+        } while (end.before(start) || workspaceService.isDateOverlap(end));
+
+        return end;
+    }
+
 
     /**
      * Prompts the user to input details for a new conference and ensures the conference
@@ -185,10 +244,9 @@ public class App {
      *
      * @param conferences the list of existing conferences.
      * @param numberConferenceRoom the room number for the conference.
-     * @param lastId the last used conference ID.
      * @return an Optional containing the new conference if there are no overlaps, otherwise an empty Optional.
      */
-    private static Optional<Conference> inputConference(List<Conference> conferences, User user, Long numberConferenceRoom, Long lastId) {
+    private static Optional<Conference> inputConference(List<Conference> conferences, User user, Long numberConferenceRoom) {
         String title;
         Date startConference;
         Date endConference;
@@ -199,7 +257,7 @@ public class App {
         startConference = inputStart(conferences);
         endConference = inputEnd(startConference, conferences);
 
-        Conference newConference = new Conference(lastId + 1, title, startConference, endConference, user, numberConferenceRoom);
+        Conference newConference = new Conference(title, startConference, endConference, user, numberConferenceRoom);
         if (conferenceService.isDateOverlap(newConference, conferences)) {
             errorMessage("", "The conference dates overlap with an existing conference.");
             return Optional.empty();
@@ -213,14 +271,18 @@ public class App {
      *
      * @param conferenceId the ID of the conference to edit.
      * @param conferences the list of existing conferences.
-     * @param numberConferenceRoom the room number for the conference.
      * @return the edited conference.
      */
-    private static Conference editConference(final Long conferenceId, final List<Conference> conferences, Long numberConferenceRoom) {
+    private static Conference editConference(final Long conferenceId, final List<Conference> conferences) {
 
         clearTerminal();
 
-        Conference conference = conferenceService.findById(conferenceId);
+        Conference conference = conferences.stream()
+                .filter(x -> x.getConferenceId().equals(conferenceId))
+                .findFirst()
+                .get();
+
+        Long numberConferenceRoom = conference.getNumberConferenceRoom();
 
         String title = conference.getConferenceTitle();
         Date startConference = conference.getStartConference();
@@ -316,6 +378,9 @@ public class App {
      *                   a message indicating that all seats are available is printed.
      */
     private static void printWorkspaces(final List<Workspace> workspaces) {
+
+        if (workspaces == null || workspaces.isEmpty()) return;
+
         clearTerminal();
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd.MM.yyyy");
 
@@ -397,7 +462,15 @@ public class App {
 
             switch (command) {
                 case "1" -> {
-                    user = Login.loginUser(userService.findAll());
+
+                    List<User> users = new ArrayList<>();
+                    try {
+                        users = userService.findAll();
+                    } catch (SQLException e) {
+                        System.out.println("SDFSDF: " + e.getMessage());
+                    }
+                    user = Login.loginUser(users);
+
                     if (user.isEmpty())
                         System.out.println("User not found\nTry another login or password");
                     else
@@ -431,23 +504,38 @@ public class App {
      * The title, start reservation date, and end reservation date are input by the user.
      * The new workspace is assigned an ID that is one greater than the size of the given list of workspaces.
      *
-     * @param workspaces The list of existing workspaces to determine the ID of the new workspace.
      * @return A new Workspace object with the input details.
      */
-    private static Workspace inputWorkspace(List<Workspace> workspaces) {
+    private static Workspace inputWorkspace() {
+
         String title = inputTitle();
-        Date startReservation = inputStart(workspaces);
-        Date endReservation = inputEnd(startReservation, workspaces);
-        return new Workspace((long) (workspaces.size() + 1), title, startReservation, endReservation);
+        Date startReservation = null;
+        Date endReservation = null;
+        try {
+            startReservation = inputStart();
+            endReservation = inputEnd(startReservation);
+        } catch (SQLException e) {
+            System.out.println();
+        }
+        return new Workspace(title, startReservation, endReservation);
     }
 
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws SQLException, EntityExistException {
+
+
+        try(Connection connection = ConnectionManager.getConnection()) {
+            Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(connection));
+            Liquibase liquibase = new Liquibase("db/changelog/changelog.xml", new ClassLoaderResourceAccessor(), database);
+            liquibase.clearCheckSums();
+            liquibase.update();
+        } catch (SQLException | LiquibaseException e) {
+            System.out.println(e.getMessage());
+        }
 
 
         List<Workspace> workspaces = new ArrayList<>();
-
-        List<Conference> conferences = conferenceService.findAll();
+        List<Conference> conferences = new ArrayList<>();
 
         String command;
         boolean success = false;
@@ -455,39 +543,6 @@ public class App {
 
         Optional<User> mainUser = Optional.empty();
         Scanner scanner = new Scanner(System.in);
-
-        User user1 = new User("qwe", "123");
-        User user2 = new User("qwe", "123");
-        Conference conf1 = new Conference(
-                (long) 1,
-                "theta",
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("12:00 23.06.2024"),
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("14:00 23.04.2024"),
-                user2,
-                1L
-        );
-
-        Conference conf2 = new Conference(
-                (long) 2,
-                "betta",
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("12:00 23.06.2024"),
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("13:00 23.04.2024"),
-                user1,
-                2L
-        );
-
-        conferenceService.add(conf1);
-        conferenceService.add(conf2);
-
-        user1.setUserConferences(new ArrayList<>(Arrays.asList(conf2)));
-        user2.setUserConferences(new ArrayList<>(Arrays.asList(conf1)));
-
-        try {
-            userService.add(user1);
-            userService.add(user2);
-        } catch (EntityExistException | SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
         while (true) {
 
@@ -497,9 +552,18 @@ public class App {
                 System.out.println(e.getMessage());
             }
             if (mainUser.isEmpty()) break;
+            System.out.println(mainUser.get());
+
 
             clearTerminal();
-            conferences = conferenceService.findAll();
+            try {
+                conferences = conferenceService.findAll();
+                workspaces = workspaceService.findAll();
+
+            } catch (SQLException e) {
+                System.out.println("Set event: " + e.getMessage());
+            }
+
             printConferences(conferences);
 
             success = false;
@@ -514,12 +578,14 @@ public class App {
             String workConferenceChoice = scanner.nextLine();
 
             if (workConferenceChoice.equals("1")) {
+                printWorkspaces(workspaces);
 
-                do {
+                while(true) {
 
-                    printWorkspaces(workspaces);
+                    workspaces = workspaceService.findAll();
                     printChoices(
                             "View all workspaces",
+                            "View my workspace",
                             "Reservation workspace",
                             "Cancel Reservation"
                     );
@@ -530,20 +596,28 @@ public class App {
 
                     switch (command) {
                         case "1" -> printWorkspaces(workspaces);
-                        case "2" -> workspaces.add(inputWorkspace(workspaces));
+                        case "2" -> printWorkspaces(Arrays.asList(mainUser.get().getUserWorkspace()));
                         case "3" -> {
-                            System.out.print("Enter workspace number: ");
-                            try {
-                                Long id = scanner.nextLong();
-                                workspaces.remove(findIndexByIdWorkspace(workspaces, id).intValue());
-                                mainUser.get().setUserWorkspace(null);
-                            } catch (InputMismatchException | IndexOutOfBoundsException e) {
-                                errorMessage("Enter correct id: " + e.getMessage());
+                            User user = mainUser.get();
+                            Workspace workspace = inputWorkspace();
+                            user.setUserWorkspace(workspace);
+                            workspaceService.add(workspace);
+                            userService.update(user, user.getUserId());
+                        }
+                        case "4" -> {
+                            if (!workspaceService.exist(mainUser.get().getUserWorkspace().getWorkspaceId())) {
+                                System.out.println("Workspace not exist for delete");
+                                break;
                             }
+
+                            userService.removeWorkspace(mainUser.get().getUserId());
+                            workspaceService.remove(mainUser.get().getUserWorkspace());
+                            infoMessage("You reservation has been successfully canceled");
+                            printWorkspaces(workspaceService.findAll());
                         }
                         default -> errorMessage("Unexpected value: " + command, "");
                     }
-                } while (!command.equals("0"));
+                }
 
             } else if (workConferenceChoice.equals("2")) {
                 do {
@@ -570,8 +644,9 @@ public class App {
                 if (numberConferenceRoom.equals(0L)) continue;
                 printConferences(conferences);
 
-                if (mainUser.get().getUsername().equals("admin"))
+                if (mainUser.get().getUsername().equals("admin")) {
                     mainUser.get().setUserConferences(conferenceService.findAll());
+                }
 
                 do {
                     printChoices(
@@ -588,15 +663,14 @@ public class App {
 
                     switch (command) {
 
-                        case "1" -> printConferences(conferenceService.findAll());
+                        case "1" -> printConferences(conferences);
                         case "2" -> printConferences(conferenceService.findAllByConferenceRoomNumber(numberConferenceRoom));
                         case "3" -> printConferences(conferenceService.findAllByUserId(mainUser.get().getUserId()));
                         case "4" -> {
                             Optional<Conference> conference = inputConference(
                                     conferences,
                                     mainUser.get(),
-                                    numberConferenceRoom,
-                                    conferenceService.getSize()
+                                    numberConferenceRoom
                             );
 
                             if (conference.isPresent()) {
@@ -608,13 +682,13 @@ public class App {
                         case "5" -> {
 
                             Conference editedConference;
-                            printConferences(mainUser.get().getUserConferences());
+                            printConferences(conferenceService.findAllByUserId(mainUser.get().getUserId()));
                             System.out.print("Enter number conference: ");
 
                             try {
                                 Long id = scanner.nextLong();
 
-                                editedConference = editConference(id, conferences, numberConferenceRoom);
+                                editedConference = editConference(id, conferenceService.findAllByUserId(mainUser.get().getUserId()));
                                 conferenceService.update(editedConference, id);
 
                                 infoMessage("Success edit");
@@ -627,11 +701,11 @@ public class App {
                         }
 
                         case "6" -> {
-                            printConferences(mainUser.get().getUserConferences());
+                            printConferences(conferenceService.findAllByUserId(mainUser.get().getUserId()));
                             System.out.print("Enter conference number: ");
                             try {
-                                conferenceService.delete(scanner.nextLong());
-                            } catch (InputMismatchException | IndexOutOfBoundsException e) {
+                                conferenceService.remove(scanner.nextLong());
+                            } catch (InputMismatchException | IndexOutOfBoundsException | SQLException e) {
                                 errorMessage("Enter correct id: " + e.getMessage());
                             }
                         }

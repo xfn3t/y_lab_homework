@@ -1,35 +1,53 @@
 package ru.homework.service;
 
+import ru.homework.DAO.IDAO;
 import ru.homework.DAO.UserDAO;
-import ru.homework.DTO.Conference;
 import ru.homework.DTO.User;
+import ru.homework.DTO.Workspace;
+import ru.homework.connection.ConnectionManager;
 import ru.homework.exceptions.EntityExistException;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserService {
+public class UserService implements Service<User> {
 
-    private UserDAO userDAO = new UserDAO();
+    private IDAO<User> userDAO = new UserDAO();
 
+    @Override
     public void add(User user) throws EntityExistException, SQLException {
         if (exist(user)) throw new EntityExistException("User exist");
-        user.setUserId(findLastId()+1);
         userDAO.add(user);
     }
 
+    @Override
     public List<User> findAll() throws SQLException {
         return userDAO.findAll();
     }
 
+    @Override
     public User findById(Long id) throws SQLException {
         return userDAO.findById(id);
     }
 
+    @Override
     public void update(User user, Long id) throws SQLException {
         userDAO.update(user, id);
     }
 
+    @Override
+    public void remove(User user) throws SQLException {
+        userDAO.remove(user);
+    }
+
+    @Override
+    public void remove(Long id) throws SQLException {
+        userDAO.remove(id);
+    }
+
+    @Override
     public boolean exist(User user) throws SQLException {
         return userDAO.findAll().stream().anyMatch(
                 x -> x.getUserId().equals(user.getUserId()) &&
@@ -37,6 +55,7 @@ public class UserService {
         );
     }
 
+    @Override
     public boolean exist(final Long id) throws SQLException {
         return userDAO.findAll().stream().anyMatch(x -> x.getUserId().equals(id));
     }
@@ -51,10 +70,20 @@ public class UserService {
         return userDAO.findAll().stream().anyMatch(x -> x.getUsername().equals(username));
     }
 
-    public Long findLastId() throws SQLException {
-        List<User> users = userDAO.findAll();
-        int size = users.size();
-        if (size == 0) return 0L;
-        return users.get(size-1).getUserId();
+    public void addWorkspace(Workspace workspace) throws SQLException, EntityExistException {
+        WorkspaceService workspaceService = new WorkspaceService();
+        workspaceService.add(workspace);
+    }
+
+    public void removeWorkspace(Long userId) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection();
+        User user = findById(userId);
+
+        String sql = "UPDATE private.t_user SET workspace_id = null WHERE user_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setLong(1, user.getUserId());
+
+        statement.executeUpdate();
     }
 }
