@@ -133,8 +133,8 @@ public class ConferenceDAO implements IDAO<Conference> {
 
         Connection connection = ConnectionManager.getConnection();
 
-        String removeById = "DELETE FROM private.t_conference c WHERE c.conference_id = ? AND c.conference_title = ?";
-        PreparedStatement statement = connection.prepareStatement(removeById);
+        String removeByEntity = "DELETE FROM private.t_conference c WHERE c.conference_id = ? AND c.conference_title = ?";
+        PreparedStatement statement = connection.prepareStatement(removeByEntity);
         statement.setLong(1, conference.getConferenceId());
         statement.setString(2, conference.getConferenceTitle());
         statement.executeUpdate();

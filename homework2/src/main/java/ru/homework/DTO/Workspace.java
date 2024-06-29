@@ -38,24 +38,12 @@ public class Workspace {
      */
     private Date endReservations;
 
-    public static boolean isDateOverlapWorkspace(final Date newDate, final List<Workspace> workspaces) {
-        for (Workspace workspace : workspaces) {
-            if (!newDate.before(workspace.getStartReservations()) && !newDate.after(workspace.getEndReservations())) {
-                return true;
-            }
-        }
-        return false;
+    public Workspace(String title, Date startReservation, Date endReservation) {
+        this.title = title;
+        this.startReservations = startReservation;
+        this.endReservations = endReservation;
     }
 
-    public static boolean isDateOverlapWorkspace(final Date newDate, final List<Workspace> workspaces, final Long workspaceId) {
-        for (Workspace workspace : workspaces) {
-            if (workspace.getWorkspaceId().equals(workspaceId)) continue;
-            if (!newDate.before(workspace.getStartReservations()) && !newDate.after(workspace.getEndReservations())) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     /**
      * Returns a string representation of the workspace with formatted date and time.
@@ -66,6 +54,7 @@ public class Workspace {
     public String toString() {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd.MM.yyyy");
         return new StringBuilder("{")
+                .append("ID: ").append(workspaceId).append(", ")
                 .append("Title: ").append(title).append(", ")
                 .append("Start reservation: ").append(formatter.format(startReservations)).append(", ")
                 .append("End reservation: ").append(formatter.format(endReservations))

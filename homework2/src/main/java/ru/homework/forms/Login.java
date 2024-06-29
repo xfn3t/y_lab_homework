@@ -1,7 +1,6 @@
 package ru.homework.forms;
 
 import ru.homework.DTO.User;
-import ru.homework.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +22,6 @@ public class Login {
      */
     public static Optional<User> loginUser(final List<User> users) {
 
-
         Scanner scanner = new Scanner(System.in);
 
         String login;
@@ -40,6 +38,7 @@ public class Login {
                         x.getUsername().equals(login) && x.getPassword().equals(password)
                 )
                 .findFirst();
+
 
         return foundUser;
     }

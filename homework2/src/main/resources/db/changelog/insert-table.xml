@@ -9,13 +9,13 @@
     <changeSet id="insert_workspace" author="xfnet">
         <insert tableName="t_workspace" schemaName="private">
             <column name="workspace_id" value="1"/>
-            <column name="title" value="Workspace A"/>
+            <column name="workspace_title" value="Workspace A"/>
             <column name="start_reservations" value="2024-07-01 12:00:00"/>
             <column name="end_reservations" value="2024-07-01 13:00:00"/>
         </insert>
         <insert tableName="t_workspace" schemaName="private">
             <column name="workspace_id" value="2"/>
-            <column name="title" value="Workspace B"/>
+            <column name="workspace_title" value="Workspace B"/>
             <column name="start_reservations" value="2024-07-01 14:00:00"/>
             <column name="end_reservations" value="2024-07-01 16:00:00"/>
         </insert>

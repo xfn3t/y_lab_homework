@@ -9,7 +9,7 @@ import java.util.List;
 public interface Service<T> {
 
     void add(T t) throws EntityExistException, SQLException;
-    List findAll() throws SQLException;
+    List<T> findAll() throws SQLException;
     T findById(Long id) throws SQLException;
     void update(T t, Long id) throws SQLException;
     void remove(T t) throws SQLException;

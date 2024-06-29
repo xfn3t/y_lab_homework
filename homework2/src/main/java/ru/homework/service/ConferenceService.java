@@ -54,7 +54,7 @@ public class ConferenceService implements Service<Conference> {
 
         Connection connection = ConnectionManager.getConnection();
 
-        String sql = "SELECT COUNT(*) AS count FROM private.t_user WHERE user_id = ?";
+        String sql = "SELECT COUNT(*) AS count FROM private.t_conference WHERE conference_id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, id);
 
@@ -67,7 +67,19 @@ public class ConferenceService implements Service<Conference> {
 
     @Override
     public boolean exist(Conference conference) throws SQLException {
-        return false;
+
+        Connection connection = ConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) AS count FROM private.t_conference WHERE conference_id = ? AND conference_title = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setLong(1, conference.getConferenceId());
+        statement.setString(2, conference.getConferenceTitle());
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+
+        int count = resultSet.getInt("count");
+        return count > 0;
     }
 
     @Override

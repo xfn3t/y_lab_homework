@@ -3,8 +3,12 @@ package ru.homework.service;
 import ru.homework.DAO.IDAO;
 import ru.homework.DAO.UserDAO;
 import ru.homework.DTO.User;
+import ru.homework.DTO.Workspace;
+import ru.homework.connection.ConnectionManager;
 import ru.homework.exceptions.EntityExistException;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -64,5 +68,22 @@ public class UserService implements Service<User> {
      */
     public boolean exist(final String username) throws SQLException {
         return userDAO.findAll().stream().anyMatch(x -> x.getUsername().equals(username));
+    }
+
+    public void addWorkspace(Workspace workspace) throws SQLException, EntityExistException {
+        WorkspaceService workspaceService = new WorkspaceService();
+        workspaceService.add(workspace);
+    }
+
+    public void removeWorkspace(Long userId) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection();
+        User user = findById(userId);
+
+        String sql = "UPDATE private.t_user SET workspace_id = null WHERE user_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setLong(1, user.getUserId());
+
+        statement.executeUpdate();
     }
 }

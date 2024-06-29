@@ -2,6 +2,7 @@ package ru.homework.DAO;
 
 import ru.homework.DTO.User;
 import ru.homework.connection.ConnectionManager;
+import ru.homework.service.WorkspaceService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class UserDAO implements IDAO<User> {
     @Override
     public List<User> findAll() throws SQLException {
 
+        WorkspaceService workspaceService = new WorkspaceService();
+
         Connection connection = ConnectionManager.getConnection();
 
         List<User> users = new ArrayList<>();
@@ -38,6 +41,12 @@ public class UserDAO implements IDAO<User> {
             user.setUsername(resultSet.getString("username"));
             user.setPassword(resultSet.getString("password"));
 
+            Long workspaceId = resultSet.getLong("workspace_id");
+            user.setUserWorkspace(workspaceService.findById(workspaceId));
+
+            System.out.println("Workspace ID: " + workspaceId);
+            System.out.println("Workspace: " + workspaceService.findById(workspaceId));
+
             users.add(user);
         }
 
@@ -47,6 +56,7 @@ public class UserDAO implements IDAO<User> {
     @Override
     public User findById(Long id) throws SQLException {
 
+        WorkspaceService workspaceService = new WorkspaceService();
         Connection connection = ConnectionManager.getConnection();
 
         String findByIdRequest = "SELECT * FROM private.t_user u WHERE u.user_id = ?";
@@ -60,6 +70,7 @@ public class UserDAO implements IDAO<User> {
         user.setUserId(resultSet.getLong("user_id"));
         user.setUsername(resultSet.getString("username"));
         user.setPassword(resultSet.getString("password"));
+        user.setUserWorkspace(workspaceService.findById(resultSet.getLong("workspace_id")));
 
         return user;
     }
@@ -73,7 +84,7 @@ public class UserDAO implements IDAO<User> {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, user.getUsername());
         statement.setString(2, user.getPassword());
-        statement.setLong(3, user.getUserWorkspace().getWorkspaceId());
+        statement.setLong(3, user.getUserWorkspace() == null ? null : user.getUserWorkspace().getWorkspaceId());
         statement.setLong(4, id);
 
         statement.executeUpdate();
@@ -111,4 +122,6 @@ public class UserDAO implements IDAO<User> {
         PreparedStatement statement = connection.prepareStatement(removeById);
         statement.executeUpdate();
     }
+
+
 }

@@ -18,7 +18,7 @@
             <column name="workspace_id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="title" type="varchar(255)"/>
+            <column name="workspace_title" type="varchar(255)"/>
             <column name="start_reservations" type="timestamp"/>
             <column name="end_reservations" type="timestamp"/>
         </createTable>
@@ -32,9 +32,7 @@
             </column>
             <column name="username" type="varchar(100)"/>
             <column name="password" type="varchar(100)"/>
-            <column name="workspace_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
+            <column name="workspace_id" type="bigint"/>
         </createTable>
     </changeSet>
 
@@ -61,7 +59,7 @@
                                  referencedTableName="t_workspace" referencedColumnNames="workspace_id"
                                  baseTableSchemaName="private"
                                  referencedTableSchemaName="private"
-                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+                                 onUpdate="CASCADE"/>
     </changeSet>
 
     <!-- Add foreign key for user_id in t_conference -->
