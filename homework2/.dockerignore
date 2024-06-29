@@ -1,0 +1,10 @@
+*.jar
+*.war
+*.zip
+*.tar.gz
+.mvn/
+*.log
+*.md
+Dockerfile
+.git/
+.idea/
