@@ -7,16 +7,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO {
+public class UserDAO implements IDAO<User> {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/coworking";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "root";
-
-
+    @Override
     public void add(User user) throws SQLException {
 
-        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+        Connection connection = ConnectionManager.getConnection();
 
         String addRequest = "INSERT INTO private.t_user(username, password) VALUES(?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(addRequest);
@@ -25,9 +21,10 @@ public class UserDAO {
         preparedStatement.executeUpdate();
     }
 
+    @Override
     public List<User> findAll() throws SQLException {
 
-        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+        Connection connection = ConnectionManager.getConnection();
 
         List<User> users = new ArrayList<>();
         String findAllRequest = "SELECT * FROM private.t_user";
@@ -47,9 +44,10 @@ public class UserDAO {
         return users;
     }
 
+    @Override
     public User findById(Long id) throws SQLException {
 
-        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+        Connection connection = ConnectionManager.getConnection();
 
         String findByIdRequest = "SELECT * FROM private.t_user u WHERE u.user_id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(findByIdRequest);
@@ -66,37 +64,25 @@ public class UserDAO {
         return user;
     }
 
+    @Override
     public void update(User user, Long id) throws SQLException {
 
-        PreparedStatement statement = null;
+        Connection connection = ConnectionManager.getConnection();
 
-        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+        String sql = "UPDATE private.t_user SET username = ?, password = ?, workspace_id = ? WHERE user_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, user.getUsername());
+        statement.setString(2, user.getPassword());
+        statement.setLong(3, user.getUserWorkspace().getWorkspaceId());
+        statement.setLong(4, id);
 
-        try {
-
-            String sql = "UPDATE private.t_user u SET u.username = ?, u.password = ?, u.workspace_id WHERE u.user_id = ?";
-            statement = connection.prepareStatement(sql);
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getPassword());
-            statement.setLong(3, user.getUserWorkspace().getWorkspaceId());
-            statement.setLong(4, id);
-
-            int rowsUpdated = statement.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Данные пользователя с ID " + id + " успешно обновлены.");
-            } else {
-                System.out.println("Не удалось найти пользователя с ID " + id + " в базе данных.");
-            }
-        } finally {
-            if (statement != null) {
-                statement.close();
-            }
-        }
+        statement.executeUpdate();
     }
 
+    @Override
     public void remove(Long id) throws SQLException {
 
-        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+        Connection connection = ConnectionManager.getConnection();
 
         String removeById = "DELETE FROM private.t_user u WHERE u.user_id = ?";
         PreparedStatement statement = connection.prepareStatement(removeById);
@@ -104,9 +90,10 @@ public class UserDAO {
         statement.executeUpdate();
     }
 
+    @Override
     public void remove(User user) throws SQLException {
 
-        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+        Connection connection = ConnectionManager.getConnection();
 
         String removeById = "DELETE FROM private.t_user u WHERE u.user_id = ? AND u.username = ?";
         PreparedStatement statement = connection.prepareStatement(removeById);
@@ -115,9 +102,10 @@ public class UserDAO {
         statement.executeUpdate();
     }
 
+    @Override
     public void removeAll() throws SQLException {
 
-        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+        Connection connection = ConnectionManager.getConnection();
 
         String removeById = "DELETE FROM private.t_user";
         PreparedStatement statement = connection.prepareStatement(removeById);

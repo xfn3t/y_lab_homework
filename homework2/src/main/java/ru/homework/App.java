@@ -1,14 +1,23 @@
 package ru.homework;
 
+import liquibase.Liquibase;
+import liquibase.database.Database;
+import liquibase.database.DatabaseFactory;
+import liquibase.database.jvm.JdbcConnection;
+import liquibase.exception.LiquibaseException;
+import liquibase.resource.ClassLoaderResourceAccessor;
 import ru.homework.DTO.Conference;
 import ru.homework.DTO.User;
 import ru.homework.DTO.Workspace;
+import ru.homework.connection.ConnectionManager;
 import ru.homework.exceptions.EntityExistException;
 import ru.homework.forms.Login;
 import ru.homework.forms.Registration;
 import ru.homework.service.ConferenceService;
 import ru.homework.service.UserService;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -185,10 +194,9 @@ public class App {
      *
      * @param conferences the list of existing conferences.
      * @param numberConferenceRoom the room number for the conference.
-     * @param lastId the last used conference ID.
      * @return an Optional containing the new conference if there are no overlaps, otherwise an empty Optional.
      */
-    private static Optional<Conference> inputConference(List<Conference> conferences, User user, Long numberConferenceRoom, Long lastId) {
+    private static Optional<Conference> inputConference(List<Conference> conferences, User user, Long numberConferenceRoom) {
         String title;
         Date startConference;
         Date endConference;
@@ -199,7 +207,7 @@ public class App {
         startConference = inputStart(conferences);
         endConference = inputEnd(startConference, conferences);
 
-        Conference newConference = new Conference(lastId + 1, title, startConference, endConference, user, numberConferenceRoom);
+        Conference newConference = new Conference(title, startConference, endConference, user, numberConferenceRoom);
         if (conferenceService.isDateOverlap(newConference, conferences)) {
             errorMessage("", "The conference dates overlap with an existing conference.");
             return Optional.empty();
@@ -213,14 +221,18 @@ public class App {
      *
      * @param conferenceId the ID of the conference to edit.
      * @param conferences the list of existing conferences.
-     * @param numberConferenceRoom the room number for the conference.
      * @return the edited conference.
      */
-    private static Conference editConference(final Long conferenceId, final List<Conference> conferences, Long numberConferenceRoom) throws SQLException {
+    private static Conference editConference(final Long conferenceId, final List<Conference> conferences) {
 
         clearTerminal();
 
-        Conference conference = conferenceService.findById(conferenceId);
+        Conference conference = conferences.stream()
+                .filter(x -> x.getConferenceId().equals(conferenceId))
+                .findFirst()
+                .get();
+
+        Long numberConferenceRoom = conference.getNumberConferenceRoom();
 
         String title = conference.getConferenceTitle();
         Date startConference = conference.getStartConference();
@@ -442,11 +454,20 @@ public class App {
     }
 
 
-    public static void main(String[] args) throws ParseException, SQLException {
+    public static void main(String[] args) throws SQLException {
+
+
+        try(Connection connection = ConnectionManager.getConnection()) {
+            Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(connection));
+            Liquibase liquibase = new Liquibase("db/changelog/changelog.xml", new ClassLoaderResourceAccessor(), database);
+            liquibase.clearCheckSums();
+            liquibase.update();
+        } catch (SQLException | LiquibaseException e) {
+            System.out.println(e.getMessage());
+        }
 
 
         List<Workspace> workspaces = new ArrayList<>();
-
         List<Conference> conferences = new ArrayList<>();
 
         String command;
@@ -455,40 +476,6 @@ public class App {
 
         Optional<User> mainUser = Optional.empty();
         Scanner scanner = new Scanner(System.in);
-
-        User user1 = new User("qwe", "123");
-        User user2 = new User("qwe", "123");
-        Conference conf1 = new Conference(
-                (long) 1,
-                "theta",
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("12:00 23.06.2024"),
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("14:00 23.04.2024"),
-                user2,
-                1L
-        );
-
-        Conference conf2 = new Conference(
-                (long) 2,
-                "betta",
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("12:00 23.06.2024"),
-                new SimpleDateFormat("HH:mm dd.MM.yyyy").parse("13:00 23.04.2024"),
-                user1,
-                2L
-        );
-
-
-
-        user1.setUserConferences(new ArrayList<>(Arrays.asList(conf2)));
-        user2.setUserConferences(new ArrayList<>(Arrays.asList(conf1)));
-
-        try {
-            conferenceService.add(conf1);
-            conferenceService.add(conf2);
-            userService.add(user1);
-            userService.add(user2);
-        } catch (EntityExistException | SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
         while (true) {
 
@@ -521,7 +508,7 @@ public class App {
 
             if (workConferenceChoice.equals("1")) {
 
-                do {
+                while(true) {
 
                     printWorkspaces(workspaces);
                     printChoices(
@@ -549,7 +536,7 @@ public class App {
                         }
                         default -> errorMessage("Unexpected value: " + command, "");
                     }
-                } while (!command.equals("0"));
+                }
 
             } else if (workConferenceChoice.equals("2")) {
                 do {
@@ -602,8 +589,7 @@ public class App {
                             Optional<Conference> conference = inputConference(
                                     conferences,
                                     mainUser.get(),
-                                    numberConferenceRoom,
-                                    conferenceService.getSize()
+                                    numberConferenceRoom
                             );
 
                             if (conference.isPresent()) {
@@ -615,13 +601,13 @@ public class App {
                         case "5" -> {
 
                             Conference editedConference;
-                            printConferences(mainUser.get().getUserConferences());
+                            printConferences(conferenceService.findAllByUserId(mainUser.get().getUserId()));
                             System.out.print("Enter number conference: ");
 
                             try {
                                 Long id = scanner.nextLong();
 
-                                editedConference = editConference(id, conferences, numberConferenceRoom);
+                                editedConference = editConference(id, conferenceService.findAllByUserId(mainUser.get().getUserId()));
                                 conferenceService.update(editedConference, id);
 
                                 infoMessage("Success edit");
@@ -634,7 +620,7 @@ public class App {
                         }
 
                         case "6" -> {
-                            printConferences(mainUser.get().getUserConferences());
+                            printConferences(conferenceService.findAllByUserId(mainUser.get().getUserId()));
                             System.out.print("Enter conference number: ");
                             try {
                                 conferenceService.remove(scanner.nextLong());

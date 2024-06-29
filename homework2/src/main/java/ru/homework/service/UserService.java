@@ -1,7 +1,7 @@
 package ru.homework.service;
 
+import ru.homework.DAO.IDAO;
 import ru.homework.DAO.UserDAO;
-import ru.homework.DTO.Conference;
 import ru.homework.DTO.User;
 import ru.homework.exceptions.EntityExistException;
 
@@ -10,12 +10,11 @@ import java.util.List;
 
 public class UserService implements Service<User> {
 
-    private UserDAO userDAO = new UserDAO();
+    private IDAO<User> userDAO = new UserDAO();
 
     @Override
     public void add(User user) throws EntityExistException, SQLException {
         if (exist(user)) throw new EntityExistException("User exist");
-        user.setUserId(findLastId()+1);
         userDAO.add(user);
     }
 
@@ -35,15 +34,16 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public void remove(User user) {
-
+    public void remove(User user) throws SQLException {
+        userDAO.remove(user);
     }
 
     @Override
-    public void remove(Long id) {
-
+    public void remove(Long id) throws SQLException {
+        userDAO.remove(id);
     }
 
+    @Override
     public boolean exist(User user) throws SQLException {
         return userDAO.findAll().stream().anyMatch(
                 x -> x.getUserId().equals(user.getUserId()) &&
@@ -51,6 +51,7 @@ public class UserService implements Service<User> {
         );
     }
 
+    @Override
     public boolean exist(final Long id) throws SQLException {
         return userDAO.findAll().stream().anyMatch(x -> x.getUserId().equals(id));
     }
@@ -63,12 +64,5 @@ public class UserService implements Service<User> {
      */
     public boolean exist(final String username) throws SQLException {
         return userDAO.findAll().stream().anyMatch(x -> x.getUsername().equals(username));
-    }
-
-    public Long findLastId() throws SQLException {
-        List<User> users = userDAO.findAll();
-        int size = users.size();
-        if (size == 0) return 0L;
-        return users.get(size-1).getUserId();
     }
 }

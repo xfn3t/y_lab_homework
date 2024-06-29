@@ -14,5 +14,7 @@ public interface Service<T> {
     void update(T t, Long id) throws SQLException;
     void remove(T t) throws SQLException;
     void remove(Long id) throws SQLException;
+    boolean exist(Long id) throws SQLException;
+    boolean exist(T t) throws SQLException;
 
 }

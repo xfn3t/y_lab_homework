@@ -1,10 +1,13 @@
 package ru.homework.service;
 
 import ru.homework.DAO.ConferenceDAO;
+import ru.homework.DAO.IDAO;
 import ru.homework.DTO.Conference;
 import ru.homework.connection.ConnectionManager;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class ConferenceService implements Service<Conference> {
 
-    private ConferenceDAO conferenceDAO = new ConferenceDAO();
+    private IDAO<Conference> conferenceDAO = new ConferenceDAO();
 
     @Override
     public List<Conference> findAll() throws SQLException {
@@ -33,7 +36,6 @@ public class ConferenceService implements Service<Conference> {
 
     @Override
     public void add(Conference conference) throws SQLException {
-        conference.setConferenceId(findLastId()+1);
         conferenceDAO.add(conference);
     }
 
@@ -45,6 +47,27 @@ public class ConferenceService implements Service<Conference> {
     @Override
     public void remove(Long id) throws SQLException {
         conferenceDAO.remove(id);
+    }
+
+    @Override
+    public boolean exist(Long id) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) AS count FROM private.t_user WHERE user_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setLong(1, id);
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+
+        int count = resultSet.getInt("count");
+        return count > 0;
+    }
+
+    @Override
+    public boolean exist(Conference conference) throws SQLException {
+        return false;
     }
 
     @Override
@@ -105,25 +128,6 @@ public class ConferenceService implements Service<Conference> {
     }
 
     /**
-     * Finds the index of a conference by its ID.
-     *
-     * @param conferences the list of conferences to search.
-     * @param id the ID of the conference to find.
-     * @return the index of the conference with the specified ID, or -1 if not found.
-     * @throws IndexOutOfBoundsException if the ID is greater than the highest conference ID in the list.
-     */
-    public Long findIndexById(List<Conference> conferences, Long id) throws IndexOutOfBoundsException {
-        if (id > conferences.get(conferences.size() - 1).getConferenceId()) throw new IndexOutOfBoundsException();
-        Long i = 0L;
-        for (Conference conference : conferences) {
-            if (conference.getConferenceId().equals(id))
-                return i;
-            ++i;
-        }
-        return -1L;
-    }
-
-    /**
      * Filters a list of conferences to include only those that start on or after the given start date
      * and end on or before the given end date.
      *
@@ -141,22 +145,9 @@ public class ConferenceService implements Service<Conference> {
         return filteredConferences;
     }
 
-
-    public Long findLastId() throws SQLException {
-        List<Conference> conferences = conferenceDAO.findAll();
-        int size = conferences.size();
-        if (size == 0) return 0L;
-        return conferences.get(size-1).getConferenceId();
-    }
-
-    public Long getSize() throws SQLException {
-        return (long) conferenceDAO.findAll().size();
-    }
-
     public List<Conference> findAllByConferenceRoomNumber(Long numberConferenceRoom) throws SQLException {
         return conferenceDAO.findAll().stream()
                 .filter(x -> x.getNumberConferenceRoom().equals(numberConferenceRoom))
                 .collect(Collectors.toList());
     }
-
 }
