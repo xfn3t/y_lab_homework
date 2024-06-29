@@ -8,26 +8,40 @@ import ru.homework.exceptions.EntityExistException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserService {
+public class UserService implements Service<User> {
 
     private UserDAO userDAO = new UserDAO();
 
+    @Override
     public void add(User user) throws EntityExistException, SQLException {
         if (exist(user)) throw new EntityExistException("User exist");
         user.setUserId(findLastId()+1);
         userDAO.add(user);
     }
 
+    @Override
     public List<User> findAll() throws SQLException {
         return userDAO.findAll();
     }
 
+    @Override
     public User findById(Long id) throws SQLException {
         return userDAO.findById(id);
     }
 
+    @Override
     public void update(User user, Long id) throws SQLException {
         userDAO.update(user, id);
+    }
+
+    @Override
+    public void remove(User user) {
+
+    }
+
+    @Override
+    public void remove(Long id) {
+
     }
 
     public boolean exist(User user) throws SQLException {

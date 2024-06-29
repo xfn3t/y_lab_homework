@@ -1,6 +1,7 @@
 package ru.homework.DAO;
 
 import ru.homework.DTO.User;
+import ru.homework.connection.ConnectionManager;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,16 +13,11 @@ public class UserDAO {
     private static final String USERNAME = "postgres";
     private static final String PASSWORD = "root";
 
-    private final Connection connection;
-    {
-        try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void add(User user) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+
         String addRequest = "INSERT INTO private.t_user(username, password) VALUES(?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(addRequest);
         preparedStatement.setString(1, user.getUsername());
@@ -30,6 +26,8 @@ public class UserDAO {
     }
 
     public List<User> findAll() throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
 
         List<User> users = new ArrayList<>();
         String findAllRequest = "SELECT * FROM private.t_user";
@@ -51,9 +49,12 @@ public class UserDAO {
 
     public User findById(Long id) throws SQLException {
 
-        String findByIdRequest = "SELECT * FROM private.t_user u WHERE u.user_id = " + id;
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(findByIdRequest);
+        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+
+        String findByIdRequest = "SELECT * FROM private.t_user u WHERE u.user_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(findByIdRequest);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
 
         resultSet.next();
 
@@ -68,6 +69,8 @@ public class UserDAO {
     public void update(User user, Long id) throws SQLException {
 
         PreparedStatement statement = null;
+
+        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
 
         try {
 
@@ -92,6 +95,9 @@ public class UserDAO {
     }
 
     public void remove(Long id) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+
         String removeById = "DELETE FROM private.t_user u WHERE u.user_id = ?";
         PreparedStatement statement = connection.prepareStatement(removeById);
         statement.setLong(1, id);
@@ -99,6 +105,9 @@ public class UserDAO {
     }
 
     public void remove(User user) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+
         String removeById = "DELETE FROM private.t_user u WHERE u.user_id = ? AND u.username = ?";
         PreparedStatement statement = connection.prepareStatement(removeById);
         statement.setLong(1, user.getUserId());
@@ -107,6 +116,9 @@ public class UserDAO {
     }
 
     public void removeAll() throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection(URL, USERNAME, PASSWORD);
+
         String removeById = "DELETE FROM private.t_user";
         PreparedStatement statement = connection.prepareStatement(removeById);
         statement.executeUpdate();

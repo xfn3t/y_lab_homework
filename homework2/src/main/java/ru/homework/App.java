@@ -216,7 +216,7 @@ public class App {
      * @param numberConferenceRoom the room number for the conference.
      * @return the edited conference.
      */
-    private static Conference editConference(final Long conferenceId, final List<Conference> conferences, Long numberConferenceRoom) {
+    private static Conference editConference(final Long conferenceId, final List<Conference> conferences, Long numberConferenceRoom) throws SQLException {
 
         clearTerminal();
 
@@ -442,12 +442,12 @@ public class App {
     }
 
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, SQLException {
 
 
         List<Workspace> workspaces = new ArrayList<>();
 
-        List<Conference> conferences = conferenceService.findAll();
+        List<Conference> conferences = new ArrayList<>();
 
         String command;
         boolean success = false;
@@ -476,13 +476,14 @@ public class App {
                 2L
         );
 
-        conferenceService.add(conf1);
-        conferenceService.add(conf2);
+
 
         user1.setUserConferences(new ArrayList<>(Arrays.asList(conf2)));
         user2.setUserConferences(new ArrayList<>(Arrays.asList(conf1)));
 
         try {
+            conferenceService.add(conf1);
+            conferenceService.add(conf2);
             userService.add(user1);
             userService.add(user2);
         } catch (EntityExistException | SQLException e) {
@@ -499,7 +500,12 @@ public class App {
             if (mainUser.isEmpty()) break;
 
             clearTerminal();
-            conferences = conferenceService.findAll();
+            try {
+                conferences = conferenceService.findAll();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
             printConferences(conferences);
 
             success = false;
@@ -570,8 +576,9 @@ public class App {
                 if (numberConferenceRoom.equals(0L)) continue;
                 printConferences(conferences);
 
-                if (mainUser.get().getUsername().equals("admin"))
+                if (mainUser.get().getUsername().equals("admin")) {
                     mainUser.get().setUserConferences(conferenceService.findAll());
+                }
 
                 do {
                     printChoices(
@@ -630,8 +637,8 @@ public class App {
                             printConferences(mainUser.get().getUserConferences());
                             System.out.print("Enter conference number: ");
                             try {
-                                conferenceService.delete(scanner.nextLong());
-                            } catch (InputMismatchException | IndexOutOfBoundsException e) {
+                                conferenceService.remove(scanner.nextLong());
+                            } catch (InputMismatchException | IndexOutOfBoundsException | SQLException e) {
                                 errorMessage("Enter correct id: " + e.getMessage());
                             }
                         }
