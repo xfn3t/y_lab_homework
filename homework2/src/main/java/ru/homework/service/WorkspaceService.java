@@ -32,6 +32,10 @@ public class WorkspaceService implements Service<Workspace> {
         return workspaceDAO.findById(id);
     }
 
+    public Workspace findByTitle(String title) {
+        return new Workspace();
+    }
+
     @Override
     public void update(Workspace workspace, Long id) throws SQLException {
         workspaceDAO.update(workspace, id);
@@ -64,6 +68,9 @@ public class WorkspaceService implements Service<Workspace> {
 
     @Override
     public boolean exist(Workspace workspace) throws SQLException {
+
+        if(workspace == null) return false;
+
         Connection connection = ConnectionManager.getConnection();
 
         String sql = "SELECT COUNT(*) AS count FROM private.t_workspace WHERE workspace_id = ? AND workspace_title = ?";
@@ -95,5 +102,10 @@ public class WorkspaceService implements Service<Workspace> {
             }
         }
         return false;
+    }
+
+    @Override
+    public long findLastId() throws SQLException {
+        return workspaceDAO.findLastId();
     }
 }

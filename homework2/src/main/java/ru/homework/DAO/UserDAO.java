@@ -76,6 +76,20 @@ public class UserDAO implements IDAO<User> {
     }
 
     @Override
+    public long findLastId() throws SQLException {
+        Connection connection = ConnectionManager.getConnection();
+
+        String findLastRequest = "SELECT * FROM private.t_user ORDER BY user_id DESC LIMIT 1";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(findLastRequest);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        return resultSet.getLong("user_id");
+    }
+
+    @Override
     public void update(User user, Long id) throws SQLException {
 
         Connection connection = ConnectionManager.getConnection();
@@ -122,6 +136,5 @@ public class UserDAO implements IDAO<User> {
         PreparedStatement statement = connection.prepareStatement(removeById);
         statement.executeUpdate();
     }
-
 
 }

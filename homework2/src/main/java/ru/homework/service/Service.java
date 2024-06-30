@@ -16,5 +16,6 @@ public interface Service<T> {
     void remove(Long id) throws SQLException;
     boolean exist(Long id) throws SQLException;
     boolean exist(T t) throws SQLException;
+    long findLastId() throws SQLException;
 
 }

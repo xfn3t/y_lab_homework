@@ -52,14 +52,14 @@
         </createTable>
     </changeSet>
 
-    <!-- Add foreign key for workspace_id -->
     <changeSet id="add_fk_user_workspace" author="xfnet">
         <addForeignKeyConstraint baseTableName="t_user" baseColumnNames="workspace_id"
                                  constraintName="fk_user_workspace"
                                  referencedTableName="t_workspace" referencedColumnNames="workspace_id"
                                  baseTableSchemaName="private"
                                  referencedTableSchemaName="private"
-                                 onUpdate="CASCADE"/>
+                                 onUpdate="CASCADE"
+                                 onDelete="SET NULL"/>
     </changeSet>
 
     <!-- Add foreign key for user_id in t_conference -->
@@ -75,5 +75,6 @@
                 onDelete="CASCADE"
                 onUpdate="CASCADE"/>
     </changeSet>
+
 
 </databaseChangeLog>

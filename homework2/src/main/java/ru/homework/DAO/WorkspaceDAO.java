@@ -16,8 +16,12 @@ public class WorkspaceDAO implements IDAO<Workspace> {
         Connection connection = ConnectionManager.getConnection();
         String addRequest = "INSERT INTO private.t_workspace(workspace_id, workspace_title, start_reservations, end_reservations) VALUES(?, ?, ?, ?)";
 
+        Long lastId = findLastId();
+        if(lastId.equals(0L))
+            return;
+
         PreparedStatement preparedStatement = connection.prepareStatement(addRequest);
-        preparedStatement.setLong(1, findLastId()+1);
+        preparedStatement.setLong(1, lastId+1);
         preparedStatement.setString(2, workspace.getTitle());
         preparedStatement.setTimestamp(3, new Timestamp(workspace.getStartReservations().getTime()));
         preparedStatement.setTimestamp(4, new Timestamp(workspace.getEndReservations().getTime()));
@@ -59,7 +63,7 @@ public class WorkspaceDAO implements IDAO<Workspace> {
         preparedStatement.setLong(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        resultSet.next();
+        if (!resultSet.next()) return null;
         Workspace workspace = new Workspace();
 
         workspace.setWorkspaceId(resultSet.getLong("workspace_id"));
@@ -70,6 +74,7 @@ public class WorkspaceDAO implements IDAO<Workspace> {
         return workspace;
     }
 
+    @Override
     public long findLastId() throws SQLException {
 
         Connection connection = ConnectionManager.getConnection();
@@ -79,9 +84,11 @@ public class WorkspaceDAO implements IDAO<Workspace> {
         PreparedStatement preparedStatement = connection.prepareStatement(findLastRequest);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        resultSet.next();
+        long result = 0L;
+        if(resultSet.next())
+            result = resultSet.getLong("workspace_id");
 
-        return resultSet.getLong("workspace_id");
+        return result;
 
     }
 

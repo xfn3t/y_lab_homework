@@ -83,6 +83,11 @@ public class ConferenceService implements Service<Conference> {
     }
 
     @Override
+    public long findLastId() throws SQLException {
+        return findLastId();
+    }
+
+    @Override
     public void remove(Conference conference) throws SQLException {
         conferenceDAO.remove(conference);
     }
