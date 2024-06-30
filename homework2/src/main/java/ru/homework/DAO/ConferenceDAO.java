@@ -84,6 +84,7 @@ public class ConferenceDAO implements IDAO<Conference> {
 
     }
 
+    @Override
     public long findLastId() throws SQLException {
 
         Connection connection = ConnectionManager.getConnection();

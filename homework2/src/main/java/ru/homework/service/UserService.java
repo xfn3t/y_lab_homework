@@ -9,6 +9,7 @@ import ru.homework.exceptions.EntityExistException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -56,6 +57,11 @@ public class UserService implements Service<User> {
     }
 
     @Override
+    public long findLastId() throws SQLException {
+        return userDAO.findLastId();
+    }
+
+    @Override
     public boolean exist(final Long id) throws SQLException {
         return userDAO.findAll().stream().anyMatch(x -> x.getUserId().equals(id));
     }
@@ -70,12 +76,29 @@ public class UserService implements Service<User> {
         return userDAO.findAll().stream().anyMatch(x -> x.getUsername().equals(username));
     }
 
-    public void addWorkspace(Workspace workspace) throws SQLException, EntityExistException {
+    public void addWorkspace(Workspace workspace, Long userId) throws SQLException, EntityExistException {
+
+        Connection connection = ConnectionManager.getConnection();
         WorkspaceService workspaceService = new WorkspaceService();
+
+
+        Workspace w = findById(userId).getUserWorkspace();
+        if(w != null)
+            workspaceService.remove(w);
         workspaceService.add(workspace);
+
+        String addWorkspace = "UPDATE private.t_user SET workspace_id = ? WHERE user_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(addWorkspace);
+        preparedStatement.setLong(1, workspaceService.findLastId());
+        preparedStatement.setLong(2, userId);
+
+        preparedStatement.executeUpdate();
+
     }
 
     public void removeWorkspace(Long userId) throws SQLException {
+
+        WorkspaceService workspaceService = new WorkspaceService();
 
         Connection connection = ConnectionManager.getConnection();
         User user = findById(userId);
@@ -85,5 +108,7 @@ public class UserService implements Service<User> {
         statement.setLong(1, user.getUserId());
 
         statement.executeUpdate();
+
+        workspaceService.remove(user.getUserWorkspace().getWorkspaceId());
     }
 }

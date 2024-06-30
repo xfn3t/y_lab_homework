@@ -379,16 +379,15 @@ public class App {
      */
     private static void printWorkspaces(final List<Workspace> workspaces) {
 
-        if (workspaces == null || workspaces.isEmpty()) return;
-
         clearTerminal();
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd.MM.yyyy");
 
-        System.out.println("Workspaces:");
-        if (workspaces.isEmpty()) {
+        if (workspaces == null || workspaces.get(0) == null) {
             System.out.println("All seats are available");
             return;
         }
+
+        System.out.println("Workspaces:");
 
         String format = "%-5s%-30s%-25s%-25s%n";
         System.out.printf(format, "ID", "Title", "Start Reservation", "End Reservation");
@@ -506,7 +505,7 @@ public class App {
      *
      * @return A new Workspace object with the input details.
      */
-    private static Workspace inputWorkspace() {
+    private static Workspace inputWorkspace() throws SQLException {
 
         String title = inputTitle();
         Date startReservation = null;
@@ -515,9 +514,9 @@ public class App {
             startReservation = inputStart();
             endReservation = inputEnd(startReservation);
         } catch (SQLException e) {
-            System.out.println();
+            System.out.println(e.getMessage());
         }
-        return new Workspace(title, startReservation, endReservation);
+        return new Workspace(workspaceService.findLastId()+1, title, startReservation, endReservation);
     }
 
 
@@ -552,7 +551,6 @@ public class App {
                 System.out.println(e.getMessage());
             }
             if (mainUser.isEmpty()) break;
-            System.out.println(mainUser.get());
 
 
             clearTerminal();
@@ -598,20 +596,18 @@ public class App {
                         case "1" -> printWorkspaces(workspaces);
                         case "2" -> printWorkspaces(Arrays.asList(mainUser.get().getUserWorkspace()));
                         case "3" -> {
-                            User user = mainUser.get();
                             Workspace workspace = inputWorkspace();
-                            user.setUserWorkspace(workspace);
-                            workspaceService.add(workspace);
-                            userService.update(user, user.getUserId());
+                            userService.addWorkspace(workspace, mainUser.get().getUserId());
+                            mainUser.get().setUserWorkspace(workspace);
                         }
                         case "4" -> {
-                            if (!workspaceService.exist(mainUser.get().getUserWorkspace().getWorkspaceId())) {
+                            if (!workspaceService.exist(mainUser.get().getUserWorkspace())) {
                                 System.out.println("Workspace not exist for delete");
                                 break;
                             }
 
                             userService.removeWorkspace(mainUser.get().getUserId());
-                            workspaceService.remove(mainUser.get().getUserWorkspace());
+                            mainUser.get().setUserWorkspace(null);
                             infoMessage("You reservation has been successfully canceled");
                             printWorkspaces(workspaceService.findAll());
                         }
