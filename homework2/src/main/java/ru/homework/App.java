@@ -466,7 +466,7 @@ public class App {
                     try {
                         users = userService.findAll();
                     } catch (SQLException e) {
-                        System.out.println("SDFSDF: " + e.getMessage());
+                        System.out.println(e.getMessage());
                     }
                     user = Login.loginUser(users);
 
@@ -521,7 +521,6 @@ public class App {
 
 
     public static void main(String[] args) throws SQLException, EntityExistException {
-
 
         try(Connection connection = ConnectionManager.getConnection()) {
             Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(connection));

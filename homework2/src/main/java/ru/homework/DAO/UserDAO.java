@@ -44,9 +44,6 @@ public class UserDAO implements IDAO<User> {
             Long workspaceId = resultSet.getLong("workspace_id");
             user.setUserWorkspace(workspaceService.findById(workspaceId));
 
-            System.out.println("Workspace ID: " + workspaceId);
-            System.out.println("Workspace: " + workspaceService.findById(workspaceId));
-
             users.add(user);
         }
 
