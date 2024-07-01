@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/coworking
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: root
+
   db:
     image: postgres
     restart: always

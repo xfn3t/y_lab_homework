@@ -1,6 +1,5 @@
 package ru.homework.service;
 
-import ru.homework.DTO.Conference;
 import ru.homework.exceptions.EntityExistException;
 
 import java.sql.SQLException;
@@ -14,6 +13,7 @@ public interface Service<T> {
     void update(T t, Long id) throws SQLException;
     void remove(T t) throws SQLException;
     void remove(Long id) throws SQLException;
+    void removeAll() throws SQLException;
     boolean exist(Long id) throws SQLException;
     boolean exist(T t) throws SQLException;
     long findLastId() throws SQLException;

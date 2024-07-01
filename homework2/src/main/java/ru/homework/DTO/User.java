@@ -50,6 +50,12 @@ public class User {
         this.password = password;
     }
 
+    public User(long userId, String username, String password) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+    }
+
     /**
      * Returns a string representation of the user with the username, list of conferences, and workspace details.
      *
