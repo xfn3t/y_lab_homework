@@ -28,6 +28,31 @@ public class ConferenceService implements Service<Conference> {
         return conferenceDAO.findById(id);
     }
 
+    public Conference findByTitle(String title) throws SQLException {
+
+        UserService userService = new UserService();
+
+        Connection connection = ConnectionManager.getConnection();
+
+        String findByIdRequest = "SELECT * FROM private.t_conference c WHERE c.conference_title = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(findByIdRequest);
+        preparedStatement.setString(1, title);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (!resultSet.next()) throw new SQLException("Conference not found");
+
+        Conference conference = new Conference();
+
+        conference.setConferenceId(resultSet.getLong("conference_id"));
+        conference.setConferenceTitle(resultSet.getString("conference_title"));
+        conference.setStartConference(resultSet.getDate("start_conference"));
+        conference.setEndConference(resultSet.getDate("end_conference"));
+        conference.setNumberConferenceRoom(resultSet.getLong("number_conference_room"));
+        conference.setAuthor(userService.findById(resultSet.getLong("user_id")));
+
+        return conference;
+    }
+
     public List<Conference> findAllByUserId(Long userId) throws SQLException {
         return conferenceDAO.findAll().stream()
                 .filter(x -> x.getAuthor().getUserId().equals(userId))
@@ -47,6 +72,11 @@ public class ConferenceService implements Service<Conference> {
     @Override
     public void remove(Long id) throws SQLException {
         conferenceDAO.remove(id);
+    }
+
+    @Override
+    public void remove(String title) throws SQLException {
+        conferenceDAO.remove(findByTitle(title));
     }
 
     @Override
@@ -74,6 +104,21 @@ public class ConferenceService implements Service<Conference> {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, conference.getConferenceId());
         statement.setString(2, conference.getConferenceTitle());
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+
+        int count = resultSet.getInt("count");
+        return count > 0;
+    }
+
+    public boolean exist(String title) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) AS count FROM private.t_conference WHERE conference_title = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, title);
 
         ResultSet resultSet = statement.executeQuery();
         resultSet.next();

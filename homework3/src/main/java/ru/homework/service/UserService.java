@@ -5,7 +5,7 @@ import ru.homework.DAO.UserDAO;
 import ru.homework.DTO.User;
 import ru.homework.DTO.Workspace;
 import ru.homework.connection.ConnectionManager;
-import ru.homework.exceptions.EntityExistException;
+import ru.homework.exception.EntityExistException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,6 +33,27 @@ public class UserService implements Service<User> {
         return userDAO.findById(id);
     }
 
+    public User findByUsername(String username) throws SQLException {
+
+        WorkspaceService workspaceService = new WorkspaceService();
+        Connection connection = ConnectionManager.getConnection();
+
+        String findByIdRequest = "SELECT * FROM private.t_user u WHERE u.username = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(findByIdRequest);
+        preparedStatement.setString(1, username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        resultSet.next();
+
+        User user = new User();
+        user.setUserId(resultSet.getLong("user_id"));
+        user.setUsername(resultSet.getString("username"));
+        user.setPassword(resultSet.getString("password"));
+        user.setUserWorkspace(workspaceService.findById(resultSet.getLong("workspace_id")));
+
+        return user;
+    }
+
     @Override
     public void update(User user, Long id) throws SQLException {
         userDAO.update(user, id);
@@ -46,6 +67,11 @@ public class UserService implements Service<User> {
     @Override
     public void remove(Long id) throws SQLException {
         userDAO.remove(id);
+    }
+
+    @Override
+    public void remove(String username) throws SQLException {
+        userDAO.remove(findByUsername(username));
     }
 
     @Override

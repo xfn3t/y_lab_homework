@@ -13,7 +13,6 @@ public class ConferenceDAO implements IDAO<Conference> {
 
     private static final UserService userService = new UserService();
 
-
     @Override
     public void add(Conference conference) throws SQLException {
 
@@ -84,6 +83,7 @@ public class ConferenceDAO implements IDAO<Conference> {
 
     }
 
+
     @Override
     public long findLastId() throws SQLException {
 
@@ -109,8 +109,8 @@ public class ConferenceDAO implements IDAO<Conference> {
         PreparedStatement preparedStatement = connection.prepareStatement(updateRequest);
 
         preparedStatement.setString(1, conference.getConferenceTitle());
-        preparedStatement.setTimestamp(2, new java.sql.Timestamp(conference.getStartConference().getTime()));
-        preparedStatement.setTimestamp(3, new java.sql.Timestamp(conference.getEndConference().getTime()));
+        preparedStatement.setTimestamp(2, new Timestamp(conference.getStartConference().getTime()));
+        preparedStatement.setTimestamp(3, new Timestamp(conference.getEndConference().getTime()));
         preparedStatement.setLong(4, conference.getNumberConferenceRoom());
         preparedStatement.setLong(5, conference.getAuthor().getUserId());
         preparedStatement.setLong(6, id);

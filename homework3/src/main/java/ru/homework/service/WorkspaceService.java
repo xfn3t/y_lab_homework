@@ -4,12 +4,9 @@ import ru.homework.DAO.IDAO;
 import ru.homework.DAO.WorkspaceDAO;
 import ru.homework.DTO.Workspace;
 import ru.homework.connection.ConnectionManager;
-import ru.homework.exceptions.EntityExistException;
+import ru.homework.exception.EntityExistException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 import java.util.List;
 
@@ -32,8 +29,24 @@ public class WorkspaceService implements Service<Workspace> {
         return workspaceDAO.findById(id);
     }
 
-    public Workspace findByTitle(String title) {
-        return new Workspace();
+    public Workspace findByTitle(String title) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection();
+
+        String findByIdRequest = "SELECT * FROM private.t_workspace WHERE workspace_title = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(findByIdRequest);
+        preparedStatement.setString(1, title);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (!resultSet.next()) return null;
+        Workspace workspace = new Workspace();
+
+        workspace.setWorkspaceId(resultSet.getLong("workspace_id"));
+        workspace.setTitle(resultSet.getString("workspace_title"));
+        workspace.setStartReservations(new Date(resultSet.getTimestamp("start_reservations").getTime()));
+        workspace.setEndReservations(new Date(resultSet.getTimestamp("end_reservations").getTime()));
+
+        return workspace;
     }
 
     @Override
@@ -52,12 +65,32 @@ public class WorkspaceService implements Service<Workspace> {
     }
 
     @Override
+    public void remove(String title) throws SQLException {
+        workspaceDAO.remove(findByTitle(title));
+    }
+
+    @Override
     public boolean exist(Long id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
 
         String sql = "SELECT COUNT(*) AS count FROM private.t_workspace WHERE workspace_id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, id);
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+
+        int count = resultSet.getInt("count");
+        return count > 0;
+    }
+
+    public boolean exist(String title) throws SQLException {
+
+        Connection connection = ConnectionManager.getConnection();
+
+        String sql = "SELECT COUNT(*) AS count FROM private.t_workspace WHERE workspace_title = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, title);
 
         ResultSet resultSet = statement.executeQuery();
         resultSet.next();
@@ -73,10 +106,10 @@ public class WorkspaceService implements Service<Workspace> {
 
         Connection connection = ConnectionManager.getConnection();
 
-        String sql = "SELECT COUNT(*) AS count FROM private.t_workspace WHERE workspace_id = ? AND workspace_title = ?";
+        String sql = "SELECT COUNT(*) AS count FROM private.t_workspace WHERE workspace_title = ? AND start_reservations = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setLong(1, workspace.getWorkspaceId());
-        statement.setString(2, workspace.getTitle());
+        statement.setString(1, workspace.getTitle());
+        statement.setTimestamp(2, new Timestamp(workspace.getStartReservations().getTime()));
 
         ResultSet resultSet = statement.executeQuery();
         resultSet.next();

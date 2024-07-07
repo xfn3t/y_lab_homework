@@ -17,8 +17,6 @@ public class WorkspaceDAO implements IDAO<Workspace> {
         String addRequest = "INSERT INTO private.t_workspace(workspace_id, workspace_title, start_reservations, end_reservations) VALUES(?, ?, ?, ?)";
 
         Long lastId = findLastId();
-        if(lastId.equals(0L))
-            return;
 
         PreparedStatement preparedStatement = connection.prepareStatement(addRequest);
         preparedStatement.setLong(1, lastId+1);
