@@ -12,6 +12,11 @@
 
 [Link to pull request second homework](https://github.com/xfn3t/y_lab_homework/pull/7)
 
+### Three homework
+[Link to files](homework3)
+
+[Link to pull request second homework](https://github.com/xfn3t/y_lab_homework/pull/8)
+
 ## Usable stack
 - Java<img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_java.svg" width="30" height="30" />
 - Lombok
