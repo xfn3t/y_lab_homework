@@ -8,7 +8,7 @@ public interface IDAO<T> {
     List<T> findAll() throws SQLException;
     T findById(Long id) throws SQLException;
 
-    Long findLastId() throws SQLException;
+    long findLastId() throws SQLException;
 
     void update(T t, Long id) throws SQLException;
     void remove(Long id) throws SQLException;

@@ -49,11 +49,6 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public void removeAll() throws SQLException {
-        userDAO.removeAll();
-    }
-
-    @Override
     public boolean exist(User user) throws SQLException {
         return userDAO.findAll().stream().anyMatch(
                 x -> x.getUserId().equals(user.getUserId()) &&

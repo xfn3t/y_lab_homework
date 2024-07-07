@@ -61,8 +61,7 @@ public class UserDAO implements IDAO<User> {
         preparedStatement.setLong(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        if (!resultSet.next())
-            return null;
+        resultSet.next();
 
         User user = new User();
         user.setUserId(resultSet.getLong("user_id"));
@@ -74,7 +73,7 @@ public class UserDAO implements IDAO<User> {
     }
 
     @Override
-    public Long findLastId() throws SQLException {
+    public long findLastId() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
 
         String findLastRequest = "SELECT * FROM private.t_user ORDER BY user_id DESC LIMIT 1";
@@ -82,10 +81,9 @@ public class UserDAO implements IDAO<User> {
         PreparedStatement preparedStatement = connection.prepareStatement(findLastRequest);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        if (resultSet.next())
-            return resultSet.getLong("user_id");
+        resultSet.next();
 
-        return 0L;
+        return resultSet.getLong("user_id");
     }
 
     @Override
@@ -97,11 +95,7 @@ public class UserDAO implements IDAO<User> {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, user.getUsername());
         statement.setString(2, user.getPassword());
-
-        if (user.getUserWorkspace() != null)
-            statement.setLong(3, user.getUserWorkspace().getWorkspaceId());
-        else
-            statement.setObject(3, null);
+        statement.setLong(3, user.getUserWorkspace() == null ? null : user.getUserWorkspace().getWorkspaceId());
         statement.setLong(4, id);
 
         statement.executeUpdate();

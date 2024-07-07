@@ -69,7 +69,7 @@ public class ConferenceDAO implements IDAO<Conference> {
         preparedStatement.setLong(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        if (!resultSet.next()) return null;
+        if (!resultSet.next()) throw new SQLException("ID not found");
 
         Conference conference = new Conference();
 
@@ -85,7 +85,7 @@ public class ConferenceDAO implements IDAO<Conference> {
     }
 
     @Override
-    public Long findLastId() throws SQLException {
+    public long findLastId() throws SQLException {
 
         Connection connection = ConnectionManager.getConnection();
 
@@ -94,9 +94,9 @@ public class ConferenceDAO implements IDAO<Conference> {
         PreparedStatement preparedStatement = connection.prepareStatement(findLastRequest);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        if (resultSet.next())
-            return resultSet.getLong("conference_id");
-        return 0L;
+        resultSet.next();
+
+        return resultSet.getLong("conference_id");
 
     }
 

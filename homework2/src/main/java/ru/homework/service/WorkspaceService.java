@@ -52,11 +52,6 @@ public class WorkspaceService implements Service<Workspace> {
     }
 
     @Override
-    public void removeAll() throws SQLException {
-        workspaceDAO.removeAll();
-    }
-
-    @Override
     public boolean exist(Long id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
 

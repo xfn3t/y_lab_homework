@@ -50,11 +50,6 @@ public class ConferenceService implements Service<Conference> {
     }
 
     @Override
-    public void removeAll() throws SQLException {
-        conferenceDAO.removeAll();
-    }
-
-    @Override
     public boolean exist(Long id) throws SQLException {
 
         Connection connection = ConnectionManager.getConnection();
