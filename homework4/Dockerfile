@@ -1,30 +1,40 @@
+# Stage 1: Build Stage
 FROM maven:3.8.5-openjdk-17-slim AS build
 
 WORKDIR /app
 
-# Copy pom.xml and download dependencies
+# Copy the Maven project descriptor
 COPY pom.xml .
-RUN mvn dependency:go-offline
 
-# Copy the rest of the project files
+# Copy the source code
 COPY src ./src
 
-# Package the application
+# Build the application
 RUN mvn clean package
 
-FROM openjdk:17-jdk-alpine
+FROM liquibase/liquibase:latest AS liquibase
 
-# Set working directory
+WORKDIR /liquibase
+
+# Copy Liquibase changelog file
+COPY src/resources/db/changelog /liquibase/changelog
+
+# Set Liquibase environment variables
+ENV LIQUIBASE_DRIVER=org.postgresql.Driver
+
+# Default command to run Liquibase update
+CMD ["update", "--changeLogFile=/changelog/changelog.xml", "--url=jdbc:postgresql://db:5432/coworking", "--username=postgres", "--password=root"]
+
+FROM openjdk:17-jdk-slim AS runtime
+
 WORKDIR /app
 
-# Copy the entire Apache Tomcat directory to the container
-COPY apache-tomcat-10.1.25 /app/apache-tomcat-10.1.25
+# Copy Apache Tomcat and the built application from the build stage
+COPY apache-tomcat-9.0.91 /app/apache-tomcat-9.0.91
+COPY --from=build /app/target/homework4-1.0-SNAPSHOT /app/apache-tomcat-9.0.91/webapps/homework4
 
-# Copy the compiled application to the Tomcat webapps directory
-COPY --from=build /app/target/homework3 /app/apache-tomcat-10.1.25/webapps/homework3
-
-# Expose the necessary port for Tomcat
+# Expose port 8080
 EXPOSE 8080
 
 # Set the entrypoint to start Tomcat
-ENTRYPOINT ["/app/apache-tomcat-10.1.25/bin/catalina.sh", "run"]
+ENTRYPOINT ["/app/apache-tomcat-9.0.91/bin/catalina.sh", "run"]

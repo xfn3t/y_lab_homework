@@ -1,6 +1,1 @@
-FROM liquibase/liquibase:latest
 
-# Install PostgreSQL JDBC driver
-RUN liquibase clear
-
-COPY ./liquibase /liquibase

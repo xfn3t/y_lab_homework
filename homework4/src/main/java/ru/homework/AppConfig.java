@@ -20,5 +20,4 @@ public class AppConfig implements WebMvcConfigurer {
                 .indentOutput(true);
         converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
     }
-
 }

@@ -2961,3 +2961,503 @@
 14-Jul-2024 21:50:04.932 SEVERE [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalMapForLeaks The web application [homework4] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@5e4146f]) and a value of type [org.postgresql.jdbc.PgConnection] (value [org.postgresql.jdbc.PgConnection@67fdc86b]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.
 14-Jul-2024 21:50:04.947 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
 14-Jul-2024 21:50:04.960 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 22:19:36.818 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 22:19:36.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 22:19:36.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 22:19:36.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 22:19:36.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 22:19:36.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 22:19:36.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 22:19:36.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 22:19:36.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 22:19:36.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 22:19:36.823 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 22:19:36.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 22:19:36.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 22:19:36.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 22:19:36.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 22:19:36.835 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 22:19:36.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 22:19:36.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 22:19:36.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 22:19:36.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 22:19:36.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 22:19:36.836 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 22:19:36.837 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 22:19:36.839 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 22:19:36.846 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 22:19:37.207 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 22:19:37.280 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [791] milliseconds
+14-Jul-2024 22:19:37.366 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 22:19:37.367 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 22:19:37.381 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 22:19:37.823 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [439] ms
+14-Jul-2024 22:19:37.823 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 22:19:38.401 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [577] ms
+14-Jul-2024 22:19:38.401 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 22:19:38.952 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 22:19:38.961 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [560] ms
+14-Jul-2024 22:19:38.962 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 22:19:42.179 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 22:19:44.400 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [5 438] ms
+14-Jul-2024 22:19:44.401 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 22:19:44.444 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [42] ms
+14-Jul-2024 22:19:44.444 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 22:19:44.485 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [40] ms
+14-Jul-2024 22:19:44.486 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 22:19:44.513 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [27] ms
+14-Jul-2024 22:19:44.517 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 22:19:44.559 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [7277] milliseconds
+14-Jul-2024 22:26:35.838 INFO [http-nio-8080-exec-1] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x060xa00x010x000x060x9c0x030x030x1e0xfcB0x030xa50xfb#0xae0xe0"Af,0xad0xe90x16X0x0e-H0xa7V}0x850xc1B0x86T0xf20x1030x11 ]. HTTP method names must be tokens
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:262)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+14-Jul-2024 22:26:35.873 INFO [http-nio-8080-exec-2] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x060xc00x010x000x060xbc0x030x0380xc10xb1L0xf54A0xd4C}0xc10x8a0x970xb1p0x1f0xef^0x0a70x0b^w0x1es!0x010xa60xd60x840x010x96 ]. HTTP method names must be tokens
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:262)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+14-Jul-2024 23:09:10.342 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:09:10.567 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:09:10.844 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:09:10.869 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:09:31.294 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 23:09:31.304 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 23:09:31.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 23:09:31.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 23:09:31.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 23:09:31.309 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 23:09:31.310 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 23:09:31.310 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 23:09:31.310 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 23:09:31.310 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:09:31.310 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:09:31.338 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 23:09:31.342 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 23:09:31.342 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 23:09:31.345 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 23:09:31.347 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 23:09:31.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 23:09:31.351 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 23:09:31.353 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 23:09:31.354 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 23:09:31.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:09:31.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:09:31.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 23:09:31.361 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 23:09:31.370 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 23:09:31.874 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:09:31.909 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [871] milliseconds
+14-Jul-2024 23:09:31.990 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 23:09:31.991 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 23:09:32.006 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 23:09:32.430 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [421] ms
+14-Jul-2024 23:09:32.431 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 23:09:33.024 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [593] ms
+14-Jul-2024 23:09:33.024 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 23:09:33.678 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:09:33.688 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [663] ms
+14-Jul-2024 23:09:33.688 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 23:09:36.858 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:09:37.975 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+14-Jul-2024 23:09:37.976 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [/homework4] startup failed due to previous errors
+14-Jul-2024 23:09:38.033 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [4 345] ms
+14-Jul-2024 23:09:38.034 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 23:09:38.099 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [65] ms
+14-Jul-2024 23:09:38.099 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 23:09:38.155 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [56] ms
+14-Jul-2024 23:09:38.155 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 23:09:38.184 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [29] ms
+14-Jul-2024 23:09:38.192 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:09:38.231 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [6320] milliseconds
+14-Jul-2024 23:14:44.033 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:14:44.220 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:14:44.239 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:14:44.246 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:14:57.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 23:14:57.403 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 23:14:57.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 23:14:57.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 23:14:57.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 23:14:57.404 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 23:14:57.405 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 23:14:57.406 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 23:14:57.406 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 23:14:57.408 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:14:57.409 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:14:57.417 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 23:14:57.420 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 23:14:57.420 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 23:14:57.420 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 23:14:57.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 23:14:57.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 23:14:57.423 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 23:14:57.423 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 23:14:57.423 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 23:14:57.424 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:14:57.424 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:14:57.424 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 23:14:57.427 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 23:14:57.432 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 23:14:57.750 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:14:57.778 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [626] milliseconds
+14-Jul-2024 23:14:57.881 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 23:14:57.882 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 23:14:57.894 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 23:14:58.244 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [347] ms
+14-Jul-2024 23:14:58.245 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 23:14:58.689 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [445] ms
+14-Jul-2024 23:14:58.689 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 23:14:59.221 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:14:59.229 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [540] ms
+14-Jul-2024 23:14:59.229 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 23:15:02.950 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:15:04.330 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+14-Jul-2024 23:15:04.332 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [/homework4] startup failed due to previous errors
+14-Jul-2024 23:15:04.402 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [5 173] ms
+14-Jul-2024 23:15:04.404 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 23:15:04.486 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [81] ms
+14-Jul-2024 23:15:04.487 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 23:15:04.535 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [49] ms
+14-Jul-2024 23:15:04.538 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 23:15:04.573 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [37] ms
+14-Jul-2024 23:15:04.579 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:15:04.640 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [6861] milliseconds
+14-Jul-2024 23:16:35.800 INFO [http-nio-8080-exec-3] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x070x000x010x000x060xfc0x030x030xee0xa50 ]. HTTP method names must be tokens
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:262)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+14-Jul-2024 23:19:26.148 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:19:26.383 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:19:26.412 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:19:26.427 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:40:37.299 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 23:40:37.304 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 23:40:37.304 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 23:40:37.304 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 23:40:37.304 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 23:40:37.304 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 23:40:37.305 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 23:40:37.305 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 23:40:37.305 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 23:40:37.305 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:40:37.305 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:40:37.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 23:40:37.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 23:40:37.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 23:40:37.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 23:40:37.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 23:40:37.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 23:40:37.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 23:40:37.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 23:40:37.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 23:40:37.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:40:37.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:40:37.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 23:40:37.328 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 23:40:37.349 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 23:40:37.695 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:40:37.732 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [721] milliseconds
+14-Jul-2024 23:40:37.813 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 23:40:37.814 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 23:40:37.825 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 23:40:38.317 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [489] ms
+14-Jul-2024 23:40:38.318 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 23:40:38.813 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [495] ms
+14-Jul-2024 23:40:38.813 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 23:40:39.398 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:40:39.408 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [595] ms
+14-Jul-2024 23:40:39.408 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 23:40:42.633 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:40:44.413 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+14-Jul-2024 23:40:44.416 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [/homework4] startup failed due to previous errors
+14-Jul-2024 23:40:44.476 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [5 067] ms
+14-Jul-2024 23:40:44.476 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 23:40:44.525 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [49] ms
+14-Jul-2024 23:40:44.525 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 23:40:44.572 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [46] ms
+14-Jul-2024 23:40:44.572 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 23:40:44.607 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [35] ms
+14-Jul-2024 23:40:44.612 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:40:44.656 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [6921] milliseconds
+14-Jul-2024 23:46:21.094 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:46:21.300 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:46:21.324 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:46:21.332 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:46:34.538 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 23:46:34.543 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 23:46:34.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 23:46:34.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 23:46:34.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 23:46:34.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 23:46:34.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 23:46:34.544 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 23:46:34.545 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 23:46:34.545 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:46:34.545 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:46:34.557 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 23:46:34.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 23:46:34.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 23:46:34.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 23:46:34.558 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 23:46:34.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 23:46:34.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 23:46:34.559 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 23:46:34.560 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 23:46:34.560 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:46:34.560 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:46:34.560 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 23:46:34.563 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 23:46:34.567 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 23:46:34.873 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:46:34.927 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [656] milliseconds
+14-Jul-2024 23:46:35.002 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 23:46:35.002 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 23:46:35.016 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 23:46:35.400 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [379] ms
+14-Jul-2024 23:46:35.401 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 23:46:35.981 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [579] ms
+14-Jul-2024 23:46:35.981 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 23:46:36.685 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:46:36.696 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [715] ms
+14-Jul-2024 23:46:36.696 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 23:46:39.743 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:46:41.341 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+14-Jul-2024 23:46:41.343 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [/homework4] startup failed due to previous errors
+14-Jul-2024 23:46:41.388 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [4 692] ms
+14-Jul-2024 23:46:41.389 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 23:46:41.431 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [42] ms
+14-Jul-2024 23:46:41.431 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 23:46:41.473 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [42] ms
+14-Jul-2024 23:46:41.473 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 23:46:41.498 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [25] ms
+14-Jul-2024 23:46:41.503 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:46:41.543 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [6613] milliseconds
+14-Jul-2024 23:46:41.573 INFO [http-nio-8080-exec-1] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x060xe00x010x000x060xdc0x030x03H0xb860xbe80xebIPk0xcd#0xfe0x13~0xfeR0x880x980x16/0xb8X}0x100x000xdf0x980xc2~>0xb9; ]. HTTP method names must be tokens
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:262)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+14-Jul-2024 23:48:26.761 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:48:26.985 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:48:27.008 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:48:27.021 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:48:40.465 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 23:48:40.471 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 23:48:40.471 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 23:48:40.472 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 23:48:40.472 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 23:48:40.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 23:48:40.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 23:48:40.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 23:48:40.475 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 23:48:40.476 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:48:40.476 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:48:40.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 23:48:40.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 23:48:40.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 23:48:40.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 23:48:40.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 23:48:40.488 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 23:48:40.488 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 23:48:40.488 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 23:48:40.488 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 23:48:40.488 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:48:40.489 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:48:40.489 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 23:48:40.492 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 23:48:40.497 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 23:48:40.824 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:48:40.854 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [661] milliseconds
+14-Jul-2024 23:48:40.926 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 23:48:40.929 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 23:48:40.942 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 23:48:41.295 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [349] ms
+14-Jul-2024 23:48:41.295 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 23:48:41.818 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [523] ms
+14-Jul-2024 23:48:41.819 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 23:48:42.274 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:48:42.280 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [461] ms
+14-Jul-2024 23:48:42.281 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 23:48:45.145 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:48:47.983 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+14-Jul-2024 23:48:47.984 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [/homework4] startup failed due to previous errors
+14-Jul-2024 23:48:48.032 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [5 750] ms
+14-Jul-2024 23:48:48.032 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 23:48:48.078 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [46] ms
+14-Jul-2024 23:48:48.078 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 23:48:48.118 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [40] ms
+14-Jul-2024 23:48:48.119 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 23:48:48.148 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [29] ms
+14-Jul-2024 23:48:48.156 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:48:48.194 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [7338] milliseconds
+14-Jul-2024 23:49:52.419 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:49:52.646 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:49:52.653 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:49:52.670 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:50:07.443 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 23:50:07.455 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 23:50:07.467 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 23:50:07.467 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 23:50:07.467 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 23:50:07.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 23:50:07.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 23:50:07.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 23:50:07.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 23:50:07.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:50:07.474 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:50:07.476 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 23:50:07.476 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 23:50:07.477 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 23:50:07.477 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 23:50:07.477 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 23:50:07.477 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 23:50:07.477 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 23:50:07.477 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 23:50:07.478 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 23:50:07.478 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:50:07.478 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:50:07.478 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 23:50:07.478 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 23:50:07.483 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 23:50:07.824 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:50:07.889 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [703] milliseconds
+14-Jul-2024 23:50:07.974 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 23:50:07.974 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 23:50:07.993 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 23:50:08.412 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [415] ms
+14-Jul-2024 23:50:08.413 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 23:50:08.925 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [512] ms
+14-Jul-2024 23:50:08.925 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 23:50:09.459 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:50:09.469 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [544] ms
+14-Jul-2024 23:50:09.469 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 23:50:12.384 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:50:14.992 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+14-Jul-2024 23:50:14.992 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [/homework4] startup failed due to previous errors
+14-Jul-2024 23:50:15.023 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [5 554] ms
+14-Jul-2024 23:50:15.023 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 23:50:15.070 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [47] ms
+14-Jul-2024 23:50:15.070 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 23:50:15.120 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [50] ms
+14-Jul-2024 23:50:15.120 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 23:50:15.150 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [30] ms
+14-Jul-2024 23:50:15.150 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:50:15.208 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [7311] milliseconds
+14-Jul-2024 23:57:35.805 INFO [http-nio-8080-exec-1] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x070x000x010x000x060xfc0x030x030x9a0x880x970xb10x080xd50xf91@il90xebyA0xe7y ]. HTTP method names must be tokens
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:262)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+14-Jul-2024 23:57:35.885 INFO [http-nio-8080-exec-2] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x070x000x010x000x060xfc0x030x03p0xa40xfb0xa24%][a0xe7%0xd6C0x1e0xf90xe1M0xca0x190x8f0xe80xf2]0x810x0d0xb40xe00xadC0xb80xb50x13 ]. HTTP method names must be tokens
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:407)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:262)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+14-Jul-2024 23:58:38.211 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:58:38.441 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:58:38.459 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:58:38.466 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:58:51.545 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Имя версии сервера:    Apache Tomcat/10.1.25
+14-Jul-2024 23:58:51.549 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Сервер собран:         Jun 14 2024 19:31:59 UTC
+14-Jul-2024 23:58:51.550 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Номер версии сервера:  10.1.25.0
+14-Jul-2024 23:58:51.550 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+14-Jul-2024 23:58:51.550 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия ОС:             10.0
+14-Jul-2024 23:58:51.550 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Архитектура:           amd64
+14-Jul-2024 23:58:51.550 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+14-Jul-2024 23:58:51.550 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Версия JVM:            20.0.1+9-29
+14-Jul-2024 23:58:51.551 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Производитель JVM:     Oracle Corporation
+14-Jul-2024 23:58:51.551 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:58:51.551 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:58:51.561 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\conf\logging.properties
+14-Jul-2024 23:58:51.561 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 23:58:51.561 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 23:58:51.561 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 23:58:51.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 23:58:51.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 23:58:51.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+14-Jul-2024 23:58:51.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+14-Jul-2024 23:58:51.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 23:58:51.564 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:58:51.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25
+14-Jul-2024 23:58:51.565 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\temp
+14-Jul-2024 23:58:51.567 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.7] using APR version [1.7.4].
+14-Jul-2024 23:58:51.571 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+14-Jul-2024 23:58:51.878 INFO [main] org.apache.coyote.AbstractProtocol.init Инициализация ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:58:51.903 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [595] milliseconds
+14-Jul-2024 23:58:52.019 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+14-Jul-2024 23:58:52.020 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.25]
+14-Jul-2024 23:58:52.030 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs]
+14-Jul-2024 23:58:52.399 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\docs] has finished in [364] ms
+14-Jul-2024 23:58:52.400 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples]
+14-Jul-2024 23:58:52.829 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\examples] has finished in [429] ms
+14-Jul-2024 23:58:52.830 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3]
+14-Jul-2024 23:58:53.311 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:58:53.320 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework3] has finished in [491] ms
+14-Jul-2024 23:58:53.321 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4]
+14-Jul-2024 23:58:56.382 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 23:58:58.121 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+14-Jul-2024 23:58:58.123 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [/homework4] startup failed due to previous errors
+14-Jul-2024 23:58:58.177 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\homework4] has finished in [4 856] ms
+14-Jul-2024 23:58:58.177 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager]
+14-Jul-2024 23:58:58.234 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\host-manager] has finished in [56] ms
+14-Jul-2024 23:58:58.234 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager]
+14-Jul-2024 23:58:58.280 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\manager] has finished in [45] ms
+14-Jul-2024 23:58:58.280 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Установка веб приложения в папку [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT]
+14-Jul-2024 23:58:58.306 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Admin\Desktop\y_lab_homework\homework4\apache-tomcat-10.1.25\webapps\ROOT] has finished in [25] ms
+14-Jul-2024 23:58:58.311 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:58:58.352 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [6446] milliseconds
+14-Jul-2024 23:59:52.517 INFO [Thread-1] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:59:52.740 INFO [Thread-1] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+14-Jul-2024 23:59:52.770 INFO [Thread-1] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 23:59:52.785 INFO [Thread-1] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

@@ -15,7 +15,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>ru.homework.AppConfig</param-value>
+            <param-value>ru.homework.WebAppInit</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

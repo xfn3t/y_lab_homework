@@ -1,5 +1,8 @@
 package ru.homework.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,7 @@ import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/workspaces")
+@Api(tags = "Workspace Management", description = "Endpoints for managing workspaces")
 @RequiredArgsConstructor
 public class WorkspaceController {
 
@@ -20,12 +24,17 @@ public class WorkspaceController {
     private final UserService userService;
     private final User user;
 
-
     @GetMapping
-    public ResponseEntity<?> getWorkspaces(@RequestParam(required = false) Long id,
-                                           @RequestParam(required = false) String title) {
+    @ApiOperation(value = "Get workspaces", notes = "Returns a list of workspaces. You can filter by 'id' or 'title'.")
+    public ResponseEntity<?> getWorkspaces(
+            @ApiParam(value = "ID of the workspace to retrieve")
+            @RequestParam(required = false) Long id,
+            @ApiParam(value = "Title of the workspace to retrieve")
+            @RequestParam(required = false) String title) {
         try {
-            if (user == null) throw new SQLException("Need login");
+            if (user == null) {
+                throw new SQLException("Need login");
+            }
             if (id != null) {
                 return ResponseEntity.ok(workspaceService.findById(id));
             } else if (title != null) {
@@ -39,14 +48,20 @@ public class WorkspaceController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addWorkspace(@RequestBody Workspace workspace) {
+    @ApiOperation(value = "Add a workspace", notes = "Add a new workspace to the system.")
+    public ResponseEntity<?> addWorkspace(
+            @ApiParam(value = "Workspace object to add", required = true)
+            @RequestBody Workspace workspace) {
         try {
-
-            if (user == null) throw new SQLException("Need login");
-            if (workspaceService.exist(workspace)) throw new SQLException("Workspace exists");
+            if (user == null) {
+                throw new SQLException("Need login");
+            }
+            if (workspaceService.exist(workspace)) {
+                throw new EntityExistException("Workspace exists");
+            }
 
             workspaceService.add(workspace);
-            userService.addWorkspace(workspace,user.getUserId());
+            userService.addWorkspace(workspace, user.getUserId());
 
             return ResponseEntity.status(201).body("{\"status\":\"success\"}");
         } catch (EntityExistException | SQLException e) {
@@ -55,10 +70,14 @@ public class WorkspaceController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteWorkspace(@RequestParam(required = false) Long id) {
-
+    @ApiOperation(value = "Delete a workspace", notes = "Delete a workspace by its ID if logged-in user matches.")
+    public ResponseEntity<?> deleteWorkspace(
+            @ApiParam(value = "ID of the workspace to delete")
+            @RequestParam(required = false) Long id) {
         try {
-            if (user == null) throw new SQLException("Need login");
+            if (user == null) {
+                throw new SQLException("Need login");
+            }
             if (id != null && user.getUserWorkspace().getWorkspaceId().equals(id)) {
                 workspaceService.remove(id);
             } else {
@@ -71,10 +90,17 @@ public class WorkspaceController {
     }
 
     @PutMapping
-    public ResponseEntity<?> updateWorkspace(@RequestBody Workspace workspace) {
+    @ApiOperation(value = "Update a workspace", notes = "Update an existing workspace.")
+    public ResponseEntity<?> updateWorkspace(
+            @ApiParam(value = "Updated workspace object", required = true)
+            @RequestBody Workspace workspace) {
         try {
-            if (user == null) throw new SQLException("Need login");
-            if (workspace.getWorkspaceId() == null) throw new SQLException("ID not found");
+            if (user == null) {
+                throw new SQLException("Need login");
+            }
+            if (workspace.getWorkspaceId() == null) {
+                throw new SQLException("ID not found");
+            }
 
             workspaceService.update(workspace, workspace.getWorkspaceId());
             return ResponseEntity.status(201).body("{\"status\":\"success\"}");
@@ -82,4 +108,5 @@ public class WorkspaceController {
             return ResponseEntity.status(409).body("{\"status\":\"" + e.getMessage() + "\"}");
         }
     }
+
 }

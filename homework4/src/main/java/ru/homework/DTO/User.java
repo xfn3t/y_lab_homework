@@ -39,7 +39,7 @@ public class User {
     /**
      * The workspace associated with the user.
      */
-    private Workspace userWorkspace;
+        private Workspace userWorkspace;
 
     /**
      * Constructs a User with the specified username and password.

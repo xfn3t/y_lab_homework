@@ -1,13 +1,11 @@
 package ru.homework.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.homework.DAO.IDAO;
-import ru.homework.DAO.WorkspaceDAO;
 import ru.homework.DTO.Workspace;
 import ru.homework.connection.ConnectionManager;
 import ru.homework.exception.EntityExistException;
-import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.Date;

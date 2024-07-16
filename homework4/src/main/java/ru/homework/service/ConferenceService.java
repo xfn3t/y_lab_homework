@@ -1,6 +1,6 @@
 package ru.homework.service;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -142,8 +142,8 @@ public class ConferenceService implements ru.homework.service.Service<Conference
         conferenceDAO.remove(conference.getConferenceId());
     }
 
-    public boolean isDateOverlap(final Date newDate, final List<Conference> conferences) {
-        for (Conference conference : conferences) {
+    public boolean isDateOverlap(final Date newDate) throws SQLException {
+        for (Conference conference : findAll()) {
             if (!newDate.before(conference.getStartConference()) && !newDate.after(conference.getEndConference())) {
                 return true;
             }
@@ -151,8 +151,8 @@ public class ConferenceService implements ru.homework.service.Service<Conference
         return false;
     }
 
-    public boolean isDateOverlap(final Date newDate, final List<Conference> conferences, final Long conferenceId) {
-        for (Conference conference : conferences) {
+    public boolean isDateOverlap(final Date newDate, final Long conferenceId) throws SQLException {
+        for (Conference conference : findAll()) {
             if (conference.getConferenceId().equals(conferenceId)) continue;
             if (!newDate.before(conference.getStartConference()) && !newDate.after(conference.getEndConference())) {
                 return true;

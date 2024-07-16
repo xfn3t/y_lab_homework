@@ -1,0 +1,82 @@
+127.0.0.1 - - [15/Jul/2024:00:06:35 +0300] "-" 400 2230
+127.0.0.1 - - [15/Jul/2024:00:06:35 +0300] "-" 400 2222
+127.0.0.1 - - [15/Jul/2024:00:07:35 +0300] "-" 400 2200
+127.0.0.1 - - [15/Jul/2024:00:07:35 +0300] "-" 400 2126
+127.0.0.1 - - [15/Jul/2024:00:16:35 +0300] "-" 400 2080
+127.0.0.1 - - [15/Jul/2024:00:16:35 +0300] "-" 400 2218
+127.0.0.1 - - [15/Jul/2024:00:17:38 +0300] "-" 400 2218
+127.0.0.1 - - [15/Jul/2024:00:17:38 +0300] "-" 400 2206
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:00:21:28 +0300] "GET /homework4/conference?id=1 HTTP/1.1" 404 703
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:00:21:36 +0300] "POST /homework4/auth/login HTTP/1.1" 404 703
+127.0.0.1 - - [15/Jul/2024:00:26:35 +0300] "-" 400 2230
+127.0.0.1 - - [15/Jul/2024:00:26:35 +0300] "-" 400 2196
+127.0.0.1 - - [15/Jul/2024:00:27:35 +0300] "-" 400 2200
+127.0.0.1 - - [15/Jul/2024:00:27:35 +0300] "-" 400 2210
+127.0.0.1 - - [15/Jul/2024:00:36:35 +0300] "-" 400 2202
+127.0.0.1 - - [15/Jul/2024:00:36:35 +0300] "-" 400 2200
+127.0.0.1 - - [15/Jul/2024:00:37:35 +0300] "-" 400 2216
+127.0.0.1 - - [15/Jul/2024:00:37:35 +0300] "-" 400 2206
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:00:54:43 +0300] "POST /homework4/auth/login HTTP/1.1" 404 703
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:00:56:29 +0300] "POST /homework4/auth/login HTTP/1.1" 404 703
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:52 +0300] "GET /manager/css/manager.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:52 +0300] "GET /manager/images/asf-logo.svg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:52 +0300] "GET /manager/images/tomcat.svg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /tomcat.svg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /tomcat.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /favicon.ico HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /asf-logo-wide.svg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /bg-nav.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /bg-upper.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /bg-button.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:53 +0300] "GET /bg-middle.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:55 +0300] "GET / HTTP/1.1" 200 11437
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:08:58 +0300] "GET /manager/status HTTP/1.1" 401 2562
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:09:04 +0300] "GET /manager/status HTTP/1.1" 200 5943
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:09:08 +0300] "GET /manager/html HTTP/1.1" 200 21073
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:09:15 +0300] "POST /manager/html/start?path=/homework4&org.apache.catalina.filters.CSRF_NONCE=CC7FF76D484DF6AFF7041D8438950390 HTTP/1.1" 200 21192
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:11:25 +0300] "POST /manager/html/start?path=/homework4&org.apache.catalina.filters.CSRF_NONCE=CC7FF76D484DF6AFF7041D8438950390 HTTP/1.1" 200 21192
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:11:29 +0300] "GET /manager/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:11:29 +0300] "GET /manager/html HTTP/1.1" 200 21073
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:11:34 +0300] "POST /manager/html/start?path=/homework4&org.apache.catalina.filters.CSRF_NONCE=F2F1364D0BA7B4FBD5987E19232FCEEF HTTP/1.1" 200 21192
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:12:05 +0300] "POST /manager/html/upload?org.apache.catalina.filters.CSRF_NONCE=46C0DEBC67D7776B8F73D17DC8639A8F HTTP/1.1" 200 22407
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:12:22 +0300] "POST /manager/html/undeploy?path=/homework-app-1.0.0&org.apache.catalina.filters.CSRF_NONCE=84213CD0EF73579778BC63342F2BB07F HTTP/1.1" 200 21172
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:12:26 +0300] "GET /homework4/ HTTP/1.1" 404 786
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:12:34 +0300] "GET /manager/html/sessions?path=/homework4&org.apache.catalina.filters.CSRF_NONCE=F52DC4D9F25C603FA7A6987C4F8747AA HTTP/1.1" 200 4308
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:12:50 +0300] "POST /manager/html/findleaks?org.apache.catalina.filters.CSRF_NONCE=F52DC4D9F25C603FA7A6987C4F8747AA HTTP/1.1" 200 21244
+127.0.0.1 - - [15/Jul/2024:01:17:35 +0300] "-" 400 2196
+127.0.0.1 - - [15/Jul/2024:01:17:35 +0300] "-" 400 2202
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:18:29 +0300] "POST /manager/html/findleaks?org.apache.catalina.filters.CSRF_NONCE=F52DC4D9F25C603FA7A6987C4F8747AA HTTP/1.1" 403 3529
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:18:34 +0300] "GET /manager/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:18:34 +0300] "GET /manager/html HTTP/1.1" 200 21073
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:18:41 +0300] "POST /manager/html/start?path=/homework4&org.apache.catalina.filters.CSRF_NONCE=292A94FC718845F4C9AC64AD718BFADA HTTP/1.1" 200 21192
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:20:53 +0300] "GET /login HTTP/1.1" 404 777
+0:0:0:0:0:0:0:1 - admin [15/Jul/2024:01:20:59 +0300] "GET /manager/html/ HTTP/1.1" 200 21703
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:21:07 +0300] "GET /homework4/conference?id=1 HTTP/1.1" 500 8238
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:21:12 +0300] "POST /homework4/auth/login HTTP/1.1" 500 8238
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:24:26 +0300] "POST /homework4/auth/login HTTP/1.1" 500 8238
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:28:45 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12610
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:30:22 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12610
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:01:32:57 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12610
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:22:28 +0300] "GET /homework4/conference?id=1 HTTP/1.1" 500 12610
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:22:52 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12610
+127.0.0.1 - - [15/Jul/2024:13:24:55 +0300] "-" 400 2234
+127.0.0.1 - - [15/Jul/2024:13:24:55 +0300] "-" 400 2060
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:37:10 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12185
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:41:21 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12185
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:44:37 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12185
+127.0.0.1 - - [15/Jul/2024:13:44:55 +0300] "-" 400 2196
+127.0.0.1 - - [15/Jul/2024:13:44:55 +0300] "-" 400 2206
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:49:26 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12185
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:51:09 +0300] "POST /homework4/auth/login HTTP/1.1" 500 10060
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:53:38 +0300] "POST /homework4/auth/login HTTP/1.1" 500 10060
+127.0.0.1 - - [15/Jul/2024:13:54:55 +0300] "-" 400 2210
+127.0.0.1 - - [15/Jul/2024:13:54:55 +0300] "-" 400 2188
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:55:43 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12185
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:13:58:02 +0300] "POST /homework4/auth/login HTTP/1.1" 500 10060
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:14:03:41 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12185
+127.0.0.1 - - [15/Jul/2024:14:05:01 +0300] "-" 400 2212
+127.0.0.1 - - [15/Jul/2024:14:05:01 +0300] "-" 400 2236
+127.0.0.1 - - [15/Jul/2024:14:05:01 +0300] "-" 400 2196
+127.0.0.1 - - [15/Jul/2024:14:05:01 +0300] "-" 400 2206
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:14:08:03 +0300] "POST /homework4/auth/login HTTP/1.1" 500 12185
+0:0:0:0:0:0:0:1 - - [15/Jul/2024:16:46:31 +0300] "GET /homework4/conference HTTP/1.1" 500 12610
