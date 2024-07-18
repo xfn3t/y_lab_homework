@@ -12,8 +12,6 @@ import ru.homework.exception.EntityExistException;
 
 import java.sql.*;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 @Service
 @RequiredArgsConstructor
@@ -41,6 +39,7 @@ public class UserService implements ru.homework.service.Service<User> {
         return userDAO.findById(id);
     }
 
+    @Transactional
     public User findByUsername(String username) throws SQLException {
         String sql = "SELECT * FROM private.t_user WHERE username = ?";
         try (Connection conn = ConnectionManager.getConnection();

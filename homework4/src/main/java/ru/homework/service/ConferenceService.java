@@ -84,6 +84,10 @@ public class ConferenceService implements ru.homework.service.Service<Conference
         conferenceDAO.remove(id);
     }
 
+    public void removeAll() throws SQLException {
+        conferenceDAO.removeAll();
+    }
+
     @Override
     public void remove(String title) throws SQLException {
         try (Connection conn = ConnectionManager.getConnection();
